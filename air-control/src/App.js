@@ -8,12 +8,22 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends React.Component {
 
+  state = {
+    start: false 
+  }
+
+  switchButton = () => {
+    this.setState({start: true})
+  }
+
+
   render() {
     return(
       <Router>
         <div>
           <Navbar />
           <Instructions /> 
+          {this.state.start ?  <MainContainer /> : <button onClick={this.switchButton}>Start New Game</button>}
         </div>
       </Router>
     )
