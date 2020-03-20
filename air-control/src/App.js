@@ -1,17 +1,32 @@
-import React from 'react';
-import './App.css';
-import MainContainer from './containers/MainContainer'
-// import Navbar from '/containers/Navbar'
+import React from "react";
+import "./App.css";
+import MainContainer from "./containers/MainContainer";
+import Navbar from "./containers/Navbar";
+// import ReactDOM from "react-dom";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./containers/Home";
 
 
-function App() {
-  return (
-    <div className="App">
-      {/* <Navbar /> */}
-      <MainContainer />
 
-    </div>
-  );
-}
+  // ReactDOM.render(
+  //   <Router>
+  //     <div>
+  //       <Route path="/" component={Home} />
+  //     </div>
+  //   </Router>
+  // );
+
+  function App () 
+    return(
+        <div>
+          <h1>Home container</h1>
+        </div>
+      
+    )
+  
+
+
+    // document.getElementById("root")
+
 
 export default App;
