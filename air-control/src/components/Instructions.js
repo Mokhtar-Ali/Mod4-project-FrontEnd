@@ -1,13 +1,15 @@
 import React from "react";
 
 
-function Instructions ()
-return(
-    <div>
-      <h1>Instructions</h1>
-    </div>
+function Instructions () {
+  return(
+      <div>
+        <h1>Instructions</h1>
+      </div>
+  
+  )
 
-)
+}
 
 
 
