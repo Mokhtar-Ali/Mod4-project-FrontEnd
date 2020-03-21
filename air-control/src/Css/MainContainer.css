@@ -1,3 +1,17 @@
 .main-container {
-    background-color: green;
+    background-image: url("https://clipartwork.com/wp-content/uploads/2017/02/land-grass-clipart.png") ;
+    background-size: 100%; 
+    display:flex;
 }
+
+.stats-container {
+    flex:1 
+}
+/* 
+.tree-container {
+    flex:1 
+}
+
+.firewood-container{
+    flex:1 
+} */

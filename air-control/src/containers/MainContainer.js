@@ -18,7 +18,6 @@ class MainContainer extends React.Component {
     console.log(this.state.user.trees);
     return (
       <div className="main-container">
-        <h1>Main container</h1>
         <StatsContainer />
         <TreeContainer />
         <FirewoodContainer />

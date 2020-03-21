@@ -26,7 +26,7 @@ class App extends React.Component {
           <NavBar />
           {this.state.start ?  
             (<MainContainer />) : 
-            (<Instructions /> && <Button onClick={this.switchButton}> Start New Game </Button>)}
+            (<div><Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>)}
         </div>
       </Router>
     )

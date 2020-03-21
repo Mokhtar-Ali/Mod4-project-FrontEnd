@@ -2,6 +2,8 @@ import React from 'react';
 import PlayerStats from '../components/PlayerStats'
 import Weather from '../components/Weather'
 import AirQualityLevel from '../components/AirQualityLevel'
+import "../Css/MainContainer.css"
+
 
 function StatsContainer() {
   return (
