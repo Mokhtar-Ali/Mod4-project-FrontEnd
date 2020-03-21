@@ -36,7 +36,7 @@ class MainContainer extends React.Component {
     })
   }
 
-  cutTree = () => {
+  cutTree = () => {  // need to work on it more 
     console.log('cutting tree')
     let trees2 = [...this.state.trees]
     let firstTreeId = trees2[0].id
