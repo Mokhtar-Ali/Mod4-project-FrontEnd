@@ -1,11 +1,11 @@
 import React from 'react'
 
-function FirewoodContainer() {
+function PlayerStats() {
   return (
-    <div className="firewood-container">
-      <h1>FirewoodContainer</h1>
+    <div className="player-stats">
+      <h1>Player Stats</h1>
     </div>
   );
 }
 
-export default FirewoodContainer;
+export default PlayerStats;

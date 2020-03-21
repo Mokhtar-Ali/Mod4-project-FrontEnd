@@ -6,6 +6,7 @@ import AirQualityLevel from '../components/AirQualityLevel'
 function StatsContainer() {
   return (
     <div className="stats-container">
+      <h1>Stats</h1>
         <PlayerStats />
         <Weather />
         <AirQualityLevel />

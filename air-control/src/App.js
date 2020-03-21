@@ -34,23 +34,3 @@ class App extends React.Component {
 
 
 export default App;
-
-  // // ReactDOM.render(
-  // //   <Router>
-  // //     <div>
-  // //       <Route path="/" component={Home} />
-  // //     </div>
-  // //   </Router>
-  // // );
-
-  // function App () 
-  //   return(
-  //       <div>
-  //         <h1>Home container</h1>
-  //       </div>
-      
-  //   )
-  
-
-
-  //   // document.getElementById("root")
