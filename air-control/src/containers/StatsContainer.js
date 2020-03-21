@@ -5,11 +5,10 @@ import AirQualityLevel from '../components/AirQualityLevel'
 import "../Css/MainContainer.css"
 
 
-function StatsContainer() {
+function StatsContainer(props) {
   return (
     <div className="stats-container">
-      <h1>Stats</h1>
-        <PlayerStats />
+        <PlayerStats user={props.user}/>
         <Weather />
         <AirQualityLevel />
     </div>

@@ -1,9 +1,10 @@
 import React from 'react'
+import "../Css/MainContainer.css"
 
-function PlayerStats() {
+function PlayerStats(props) {
   return (
     <div className="player-stats">
-      <h1>Player Stats</h1>
+      <p>{props.user.name}</p>
     </div>
   );
 }
