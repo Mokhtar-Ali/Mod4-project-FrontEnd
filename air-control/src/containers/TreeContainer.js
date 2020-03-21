@@ -22,7 +22,8 @@ class TreeContainer extends React.Component {
       <div className="tree-container">
         <h1>Tree Container</h1>
         <p> {this.props.treesNum} </p>
-        <button onClick={this.props.plantTree}>PlantTree</button>
+        <button onClick={this.props.plantTree}>Plant a Tree</button>
+        <button onClick={this.props.cutTree}>Cut a Tree</button>
         <Tree />
       </div>
     );

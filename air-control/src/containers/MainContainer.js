@@ -4,6 +4,8 @@ import TreeContainer from "./TreeContainer";
 import FirewoodContainer from "./FirewoodContainer";
 import StatsContainer from "./StatsContainer";
 
+const TreesApi = "http://localhost:3000/trees"
+
 class MainContainer extends React.Component {
   state = {
     user: {},
@@ -20,7 +22,7 @@ class MainContainer extends React.Component {
   plantTree = () => { // plnt a tree will make a post fetch 
     let data = { user_id: 1, atmosphere_id: 1, image: ' ' }
     console.log('start fetching', data);
-    fetch("http://localhost:3000/trees", { // changed to trees instead of users
+    fetch( TreesApi, { // changed to trees instead of users
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -34,13 +36,32 @@ class MainContainer extends React.Component {
     })
   }
 
+  cutTree = () => {
+    console.log('cutting tree')
+    let trees2 = [...this.state.trees]
+    let firstTreeId = trees2[0].id
+    trees2.splice(firstTreeId, 1)
+    console.log(firstTreeId)
+    console.log(trees2);
+    
+
+    fetch(`http://localhost:3000/trees/${firstTreeId}`, {
+      method: 'DELETE'
+    })
+    this.setState({trees: trees2, treesNum: trees2.length})
+    console.log(trees2)
+    
+  }
+ 
+
+
   render() {
     // console.log(this.state.user);
     // console.log(this.state.trees);
     return (
       <div className="main-container">
         <StatsContainer user={this.state.user} />
-        <TreeContainer user={this.state.user} trees={this.state.trees} plantTree={this.plantTree} treesNum={this.state.treesNum}/>
+        <TreeContainer user={this.state.user} trees={this.state.trees} plantTree={this.plantTree} treesNum={this.state.treesNum} cutTree={this.cutTree}/>
         <FirewoodContainer />
       </div>
     );
