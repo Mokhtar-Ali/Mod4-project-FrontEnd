@@ -6,6 +6,14 @@ import "../Css/MainContainer.css"
 
 class TreeContainer extends React.Component {
 
+  state = {
+    treesNum: this.props.trees.length
+  }
+
+  increaseTrees = () => {
+    this.setState({treesNum: this.state.treesNum + 1})
+  }
+
 
 
 
@@ -13,7 +21,7 @@ class TreeContainer extends React.Component {
     return (
       <div className="tree-container">
         <h1>Tree Container</h1>
-        <p> {this.props.trees.length} </p>
+        <p> {this.props.treesNum} </p>
         <button onClick={this.props.plantTree}>PlantTree</button>
         <Tree />
       </div>
