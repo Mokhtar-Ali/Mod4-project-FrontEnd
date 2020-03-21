@@ -1,9 +1,10 @@
 import React from "react";
+import '../Css/MainContainer.css'
 import TreeContainer from "./TreeContainer";
 import FirewoodContainer from "./FirewoodContainer";
 import StatsContainer from "./StatsContainer";
 
-class MainContainer extends React.Component() {
+class MainContainer extends React.Component {
 
   state = { trees: []}
 

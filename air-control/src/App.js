@@ -1,10 +1,12 @@
 import React from "react";
 import "./App.css";
 import MainContainer from "./containers/MainContainer";
-import Navbar from "./containers/Navbar";
+import NavBar from "./containers/Navbar";
 import Instructions from "./components/Instructions"
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css' // bootstrap 
+import { Button } from 'react-bootstrap' // bootstrap buttons
 
 class App extends React.Component {
 
@@ -21,9 +23,10 @@ class App extends React.Component {
     return(
       <Router>
         <div>
-          <Navbar />
-          <Instructions /> 
-          {this.state.start ?  <MainContainer /> : <button onClick={this.switchButton}>Start New Game</button>}
+          <NavBar />
+          {this.state.start ?  
+            (<MainContainer />) : 
+            (<Instructions /> && <Button onClick={this.switchButton}> Start New Game </Button>)}
         </div>
       </Router>
     )
