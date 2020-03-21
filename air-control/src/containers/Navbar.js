@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar' // css 
 import App from "../App";
 import Login from '../components/Login'
+import Signup from "../components/Signup";
 
 
 const NavBar = () => {
@@ -18,6 +19,10 @@ const NavBar = () => {
         component={Login}
       />
       <NavLink to='/signup'> Signup </NavLink>
+      <Route
+        path="/signup"
+        component={Signup}
+      />
     </div>
   )
 }
