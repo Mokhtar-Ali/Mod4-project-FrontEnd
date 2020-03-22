@@ -1,5 +1,4 @@
-// import React from 'react'
-import React, { useState } from "react";
+import React from 'react'
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import "../Css/Login.css";
 
@@ -26,11 +25,21 @@ class Signup extends React.Component {
                     'Content-Type': 'application/json'
                 }, 
                 body: JSON.stringify(this.state)
+            }).then(res => res.json())
+            .then(response => {
+              if(response.errors){
+                alert(response.errors)
+              } else {
+                // send them somewhere
+                // storing the user object SOMEWHERE
+                // this.props.setUser(response)
+              }
             })
-            this.setState({name: '', password: ''})
-        } else {
+          } else {
             alert("Make sure you write your name and password right!!")
-        }
+          }
+      
+            this.setState({name: '', password: ''})
     }
 
     render() {
