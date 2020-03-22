@@ -12,7 +12,7 @@ class App extends React.Component {
 
   state = {
     start: false,
-    user: {},
+    currentUser: null,
 
   }
 
@@ -28,6 +28,8 @@ class App extends React.Component {
 
 
   render() {
+    console.log(this.state.currentUser)
+    
     return(
       <Router>
         <div>

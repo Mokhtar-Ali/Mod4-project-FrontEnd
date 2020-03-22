@@ -6,7 +6,7 @@ import LoginForm from '../components/LoginForm'
 import Signup from "../components/Signup";
 
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
 
     <div >
@@ -16,10 +16,10 @@ const NavBar = () => {
         path="/login"
         component={LoginForm}
       />
-      <NavLink to='/signup' setUser={this.props.setUser}> Signup </NavLink>
+      <NavLink to='/signup' > Signup </NavLink>
       <Route
         path="/signup"
-        component={Signup}
+        render={() => <Signup setUser={props.setUser}/>}
       />
     </div>
   )
