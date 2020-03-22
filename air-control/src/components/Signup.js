@@ -30,6 +30,7 @@ class Signup extends React.Component {
               if(response.errors){
                 alert(response.errors)
               } else {
+                  this.props.setUser(response)
                 // send them somewhere
                 // storing the user object SOMEWHERE
                 // this.props.setUser(response)

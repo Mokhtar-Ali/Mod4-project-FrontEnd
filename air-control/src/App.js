@@ -20,14 +20,18 @@ class App extends React.Component {
     this.setState({start: true})
   }
 
-  
+  setUser = (user) => {
+    this.setState({
+      currentUser: user
+    })
+  }
 
 
   render() {
     return(
       <Router>
         <div>
-          <NavBar />
+          <NavBar setUser={this.setUser}/>
           {/* {this.state.start ?  
             (<MainContainer />) : 
             (<div><Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>)} */}
