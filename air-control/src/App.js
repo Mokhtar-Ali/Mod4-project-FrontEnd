@@ -11,7 +11,9 @@ import { Button } from 'react-bootstrap' // bootstrap buttons
 class App extends React.Component {
 
   state = {
-    start: false 
+    start: false,
+    user: {},
+
   }
 
   switchButton = () => {
@@ -24,9 +26,9 @@ class App extends React.Component {
       <Router>
         <div>
           <NavBar />
-          {this.state.start ?  
+          {/* {this.state.start ?  
             (<MainContainer />) : 
-            (<div><Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>)}
+            (<div><Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>)} */}
         </div>
       </Router>
     )

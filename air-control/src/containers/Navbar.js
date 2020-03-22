@@ -1,9 +1,7 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
-// import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from 'react-bootstrap/Navbar' // css 
-import App from "../App";
+import 'react-bootstrap/Navbar' // css 
 import LoginForm from '../components/LoginForm'
 import Signup from "../components/Signup";
 
@@ -25,6 +23,6 @@ const NavBar = () => {
       />
     </div>
   )
-}
+} 
 
 export default NavBar;

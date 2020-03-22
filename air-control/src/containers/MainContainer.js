@@ -8,16 +8,15 @@ const TreesApi = "http://localhost:3000/trees"
 
 class MainContainer extends React.Component {
   state = {
-    user: {},
     trees: [],
     treesNum: 0
   }
 
-  componentDidMount() {
-    fetch("http://localhost:3000/users/1")
-      .then(response => response.json())
-      .then(user => this.setState({ user: user, trees: user.trees, treesNum: user.trees.length}))
-  }
+  // componentDidMount() {
+  //   fetch("http://localhost:3000/users/1")
+  //     .then(response => response.json())
+  //     .then(user => this.setState({ user: user, trees: user.trees, treesNum: user.trees.length}))
+  // }
 
   plantTree = () => { // plnt a tree will make a post fetch 
     let data = { user_id: 1, atmosphere_id: 1, image: ' ' }
