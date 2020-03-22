@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import "../Css/Login.css";
 
-class Login extends React.Component {
+class LoginForm extends React.Component {
 
     render() {
         return (
@@ -30,4 +30,4 @@ class Login extends React.Component {
         )}
 }
 
-export default Login
+export default LoginForm

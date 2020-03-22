@@ -1,0 +1,1 @@
+- Once sign up => should have default value of trees and atmosphere 

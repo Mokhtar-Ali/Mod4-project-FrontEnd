@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar' // css 
 import App from "../App";
-import Login from '../components/Login'
+import LoginForm from '../components/LoginForm'
 import Signup from "../components/Signup";
 
 
@@ -16,7 +16,7 @@ const NavBar = () => {
       <NavLink to='/login'> Login </NavLink>
       <Route
         path="/login"
-        component={Login}
+        component={LoginForm}
       />
       <NavLink to='/signup'> Signup </NavLink>
       <Route
