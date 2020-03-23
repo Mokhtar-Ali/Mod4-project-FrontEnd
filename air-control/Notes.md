@@ -1,6 +1,10 @@
 - Once sign up => should have default value of trees and atmosphere 
 
 
+STYLING 
+
+make background image fit entire page
+
 in Tool.js 
 create a function for watering trees
 once button is clicked, a small tree should change image to a medium tree in the user's tree container 
