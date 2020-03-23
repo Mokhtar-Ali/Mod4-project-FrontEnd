@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import "./App.css";
 import MainContainer from "./containers/MainContainer";
 import NavBar from "./containers/Navbar";
