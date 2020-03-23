@@ -60,9 +60,10 @@ class MainContainer extends React.Component {
     // console.log(this.state.trees);
     return (
       <div className="main-container">
-        {/* <StatsContainer user={this.props.currentUser} /> */}
+        <StatsContainer user={this.props.currentUser} />
         <TreeContainer user={this.props.currentUser} trees={this.state.trees} plantTree={this.plantTree} treesNum={this.state.treesNum} cutTree={this.cutTree}/>
-        {/* <FirewoodContainer /> */}
+        <FirewoodContainer />
+        <Tools /> 
       </div>
     );
   }
