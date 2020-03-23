@@ -14,7 +14,7 @@ const NavBar = (props) => {
       <NavLink to='/login'> Login </NavLink>
       <Route
         path="/login"
-        component={LoginForm}
+        render={() => <LoginForm setUser={props.setUser}/>}
       />
       <NavLink to='/signup' > Signup </NavLink>
       <Route

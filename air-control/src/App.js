@@ -23,8 +23,8 @@ class App extends React.Component {
   setUser = (user) => {
     this.setState({
       currentUser: user
-    })
-  }
+    }, () => {this.props.history.push('/')}
+    )}
 
 
   render() {
