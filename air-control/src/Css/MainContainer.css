@@ -21,6 +21,11 @@
 .air-quality-level {
     flex: 1
 }
+
+.img-size {
+    width: 70px;
+    height: 70px;
+}
 /* 
 <PlayerStats />
         <Weather />
