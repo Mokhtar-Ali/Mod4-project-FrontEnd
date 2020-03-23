@@ -1,5 +1,6 @@
 .main-container {
     background-image: url("https://clipartwork.com/wp-content/uploads/2017/02/land-grass-clipart.png") ;
+/* alt image https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fillustrations%2Fgrass-field-illustration-id504179334%3Fk%3D6%26m%3D504179334%26s%3D612x612%26w%3D0%26h%3Dxt0CXD9rOuMIdcSi1cgfWSNKDAiYUsFT0sQsMcjDpaE%3D&f=1&nofb=1 */
     background-size: 100%; 
     justify-content: center;
     display:flex;
@@ -23,6 +24,7 @@
 }
 
 .img-size {
+    justify-content: flex-end;
     width: 70px;
     height: 70px;
 }
