@@ -5,7 +5,11 @@ function Instructions () {
   return(
       <div>
         <h2>Instructions</h2>
-        <p>Our game illustrates the impact on the environment when trees get cut down and how that affects the atmosphere. The player has to make tough decisions to keep the balance of the air quality under control. The shifts in weather and temperature will play a huge part in their decisions. The player will succeed the game by keeping the carbon dioxide level lower or equal to the oxygen level and based on how many trees in the forest are still remaining.</p>
+        <p>You are the environmental manager and your highest duty is to keep the air quality under control so your citizens can breath clearn air.</p>
+        <p>You must monitor the oxygen and carbon dioxide output once a tree has been planted or removed.</p>
+        <p>The weather and external factors will influence your decisions whether you need to plant or cut down a tree.</p>
+        <p>You must also oversee the maintenece of the trees by watering them. Be prepared for some tree casualties. You will have tools availble to you to get the job done.</p>
+        <p>The oxygen level must be equal or above the carbon dioxoide levels or else YOU LOSE!</p>
       </div>
   
   )
