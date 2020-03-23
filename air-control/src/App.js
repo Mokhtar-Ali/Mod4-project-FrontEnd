@@ -23,17 +23,27 @@ class App extends React.Component {
   setUser = (user) => {
     this.setState({
       currentUser: user
-    }, () => {this.props.history.push('/')}
+    }, () => {
+        localStorage.user_id = user.id
+        this.props.history.push('/')
+      }
     )}
 
+    logout = () => {
+      this.setState({
+        currentUser: null
+      }, () => {
+        localStorage.removeItem('user_id')
+        this.props.history.push('/')
+      }
+      )}
 
   render() {
-    console.log(this.state.currentUser)
     
     return(
       <Router>
         <div>
-          <NavBar setUser={this.setUser}/>
+          <NavBar setUser={this.setUser} logout={this.logout} currentUser={this.state.currentUser}/>
           {/* {this.state.start ?  
             (<MainContainer />) : 
             (<div><Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>)} */}
