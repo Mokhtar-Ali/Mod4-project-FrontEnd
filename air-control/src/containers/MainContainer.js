@@ -3,6 +3,7 @@ import '../Css/MainContainer.css'
 import TreeContainer from "./TreeContainer";
 import FirewoodContainer from "./FirewoodContainer";
 import StatsContainer from "./StatsContainer";
+import Tools from "../components/Tools"
 
 const TreesApi = "http://localhost:3000/trees"
 

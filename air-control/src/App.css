@@ -1,1 +1,10 @@
 /* importing bootsrap using  <npm install react-bootstrap bootstrap> */
+
+body {
+    height: 100vh;
+
+}
+
+#root {
+    height: 100vh;
+}
