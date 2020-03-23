@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import "./App.css";
 import MainContainer from "./containers/MainContainer";
 import NavBar from "./containers/Navbar";
@@ -16,6 +16,24 @@ class App extends React.Component {
 
   }
 
+  componentDidMount() {
+    const user_id = localStorage.user_id
+    
+    if (user_id) {
+      fetch('http://localhost:3000/auto_login', {
+        headers: {
+          'Authorization': user_id
+        }
+      }).then(resp => resp.json()).then(response => {
+        if (response.errors) {
+          alert(response.errors)
+        }else {
+          this.setState({currentUser: response})
+        }
+      })
+    }
+  }
+
   switchButton = () => {
     this.setState({start: true})
   }
@@ -23,19 +41,29 @@ class App extends React.Component {
   setUser = (user) => {
     this.setState({
       currentUser: user
-    })
-  }
+    }, () => {
+        localStorage.user_id = user.id
+        this.props.history.push('/')
+      }
+    )}
 
+    logout = () => {
+      this.setState({
+        currentUser: null
+      }, () => {
+        localStorage.removeItem('user_id')
+        this.props.history.push('/')
+      }
+      )}
 
   render() {
-    console.log(this.state.currentUser)
     
     return(
       <Router>
         <div>
-          <NavBar setUser={this.setUser}/>
+          <NavBar setUser={this.setUser} logout={this.logout} currentUser={this.state.currentUser}/>
           {this.state.start ?  
-            (<MainContainer />) : 
+            (<MainContainer currentUser={this.state.currentUser}/>) : 
             (<div><Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>)}
         </div>
       </Router>

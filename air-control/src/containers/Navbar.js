@@ -11,16 +11,17 @@ const NavBar = (props) => {
 
     <div >
       <NavLink to='/'> Home </NavLink>
-      <NavLink to='/login'> Login </NavLink>
+      {(props.currentUser) ? null : <NavLink to='/login'> Login </NavLink>}
+      {(props.currentUser) ? null : <NavLink to='/signup'> Signup </NavLink>}
       <Route
         path="/login"
-        component={LoginForm}
+        render={() => <LoginForm setUser={props.setUser}/> }
       />
-      <NavLink to='/signup' > Signup </NavLink>
       <Route
         path="/signup"
-        render={() => <Signup setUser={props.setUser}/>}
+        render={() => (!props.currentUser) ? <Signup setUser={props.setUser}/> : null}
       />
+      {props.currentUser ? <button onClick={props.logout} >Logout</button> : null}
     </div>
   )
 } 

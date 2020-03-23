@@ -3,7 +3,7 @@ import PlayerStats from '../components/PlayerStats'
 import Weather from '../components/Weather'
 import AirQualityLevel from '../components/AirQualityLevel'
 import "../Css/MainContainer.css"
-
+import Tools from "../components/Tools"
 
 function StatsContainer(props) {
   return (
@@ -11,6 +11,7 @@ function StatsContainer(props) {
         <PlayerStats user={props.user}/>
         <Weather />
         <AirQualityLevel />
+        <Tools plantTree={props.plantTree} cutTree={props.cutTree}/>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import "../Css/Login.css";
 
 const API = 'http://localhost:3000/users'
 
-class Signup extends React.Component {
+class Signup extends React.Component { 
 
     state = {
         name: '',
