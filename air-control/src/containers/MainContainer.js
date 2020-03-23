@@ -3,6 +3,7 @@ import '../Css/MainContainer.css'
 import TreeContainer from "./TreeContainer";
 import FirewoodContainer from "./FirewoodContainer";
 import StatsContainer from "./StatsContainer";
+import Tools from "../components/Tools"
 
 const TreesApi = "http://localhost:3000/trees"
 
@@ -62,6 +63,7 @@ class MainContainer extends React.Component {
         <StatsContainer user={this.state.user} />
         <TreeContainer user={this.state.user} trees={this.state.trees} plantTree={this.plantTree} treesNum={this.state.treesNum} cutTree={this.cutTree}/>
         <FirewoodContainer />
+        <Tools plantTree={this.plantTree} cutTree={this.cutTree}/>
       </div>
     );
   }
