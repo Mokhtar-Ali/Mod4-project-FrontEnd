@@ -16,6 +16,24 @@ class App extends React.Component {
 
   }
 
+  componentDidMount() {
+    const user_id = localStorage.user_id
+    
+    if (user_id) {
+      fetch('http://localhost:3000/auto_login', {
+        headers: {
+          'Authorization': user_id
+        }
+      }).then(resp => resp.json()).then(response => {
+        if (response.errors) {
+          alert(response.errors)
+        }else {
+          this.setState({currentUser: response})
+        }
+      })
+    }
+  }
+
   switchButton = () => {
     this.setState({start: true})
   }
@@ -44,9 +62,9 @@ class App extends React.Component {
       <Router>
         <div>
           <NavBar setUser={this.setUser} logout={this.logout} currentUser={this.state.currentUser}/>
-          {/* {this.state.start ?  
-            (<MainContainer />) : 
-            (<div><Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>)} */}
+          {this.state.start ?  
+            (<MainContainer currentUser={this.state.currentUser}/>) : 
+            (<div><Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>)}
         </div>
       </Router>
     )

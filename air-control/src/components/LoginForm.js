@@ -39,7 +39,7 @@ class LoginForm extends React.Component {
         return (
             <div className="Login">
                 <form onSubmit={this.handleSubmit} id='form'>
-                    <FormGroup controlId="email" bsSize="large">
+                    <FormGroup controlId="email" bssize="large">
                         <label>Name</label>
                         <FormControl
                             autoFocus

@@ -8,18 +8,19 @@ const TreesApi = "http://localhost:3000/trees"
 
 class MainContainer extends React.Component {
   state = {
+    user:null,
     trees: [],
     treesNum: 0
   }
 
-  // componentDidMount() {
-  //   fetch("http://localhost:3000/users/1")
-  //     .then(response => response.json())
-  //     .then(user => this.setState({ user: user, trees: user.trees, treesNum: user.trees.length}))
-  // }
+  componentDidMount() {
+    fetch(`http://localhost:3000/users/${this.props.currentUser.id}`)
+      .then(response => response.json())
+      .then(response => this.setState({ user: response, trees: response.trees, treesNum: response.trees.length}))
+  }
 
   plantTree = () => { // plnt a tree will make a post fetch 
-    let data = { user_id: 1, atmosphere_id: 1, image: ' ' }
+    let data = { user_id: this.state.user.id, atmosphere_id: 1, image: ' ' }
     console.log('start fetching', data);
     fetch( TreesApi, { // changed to trees instead of users
       method: 'POST',
@@ -37,18 +38,17 @@ class MainContainer extends React.Component {
 
   cutTree = () => {  // need to work on it more 
     console.log('cutting tree')
-    let trees2 = [...this.state.trees]
-    let firstTreeId = trees2[0].id
-    trees2.splice(firstTreeId, 1)
-    console.log(firstTreeId)
-    console.log(trees2);
-    
-
-    fetch(`http://localhost:3000/trees/${firstTreeId}`, {
+    let trees2 = [...this.state.trees] // copying main array of trees
+    let treeId = trees2[0].id  // getting id 
+    let tree = trees2.find(t => t.id === treeId) // getting the tree obj
+    let index = trees2.indexOf(tree) // find index
+    trees2.splice(index , 1) // remove tree from copied array 
+  
+ 
+    fetch(`http://localhost:3000/trees/${treeId}`, {
       method: 'DELETE'
     })
     this.setState({trees: trees2, treesNum: trees2.length})
-    console.log(trees2)
     
   }
  
@@ -59,9 +59,9 @@ class MainContainer extends React.Component {
     // console.log(this.state.trees);
     return (
       <div className="main-container">
-        <StatsContainer user={this.state.user} />
-        <TreeContainer user={this.state.user} trees={this.state.trees} plantTree={this.plantTree} treesNum={this.state.treesNum} cutTree={this.cutTree}/>
-        <FirewoodContainer />
+        {/* <StatsContainer user={this.props.currentUser} /> */}
+        <TreeContainer user={this.props.currentUser} trees={this.state.trees} plantTree={this.plantTree} treesNum={this.state.treesNum} cutTree={this.cutTree}/>
+        {/* <FirewoodContainer /> */}
       </div>
     );
   }
