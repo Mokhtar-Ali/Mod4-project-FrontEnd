@@ -16,16 +16,16 @@ const NavBar = (props) => {
         <div className="home-button">
           <img src="https://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/512/22330-deciduous-tree-icon.png" alt='Air Control' className="logo" />
         </div>
-        <Router>
+      
           <NavLink to='/'> Home </NavLink>
-          <div class="navbar-inner" style={{float:" right"}}>  
+          
           {(props.currentUser) ? null : <NavLink to='/login'> Login </NavLink>}
           {(props.currentUser) ? null : <NavLink to='/signup'> Signup </NavLink>}
-            <Route path="/login" render={() => <LoginForm setUser={props.setUser} />} />
-            <Route path="/signup" render={() => (!props.currentUser) ? <Signup setUser={props.setUser} /> : null} />
+            <Route exact path="/login" render={() => <LoginForm setUser={props.setUser} />} />
+            <Route exact path="/signup" render={() => (!props.currentUser) ? <Signup setUser={props.setUser} /> : null} />
             {props.currentUser ? <Link onClick={props.logout} >Logout</Link> : null}
-          </div>
-        </Router>
+          
+        
       </div>
     // </div>
   )

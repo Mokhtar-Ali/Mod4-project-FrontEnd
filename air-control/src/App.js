@@ -12,7 +12,20 @@ class App extends React.Component {
   state = {
     start: false,
     currentUser: null,
+    atmosphere: null
 
+  }
+
+  initiateGame = () => {
+    fetch('http://localhost:3000/atmospheres', {
+      method: 'Post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({user_id: this.state.currentUser.id})
+    }).then(resp => resp.json())
+    .then(response => this.setState({atmosphere: response}))
+    .then(console.log)
   }
 
   componentDidMount() {
@@ -62,7 +75,7 @@ class App extends React.Component {
         <NavBar setUser={this.setUser} logout={this.logout} currentUser={this.state.currentUser}/>
         <div>
           <div>
-          {this.state.currentUser ? (<div>  <Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>) : <Instructions />}
+          {this.state.start ? null : this.state.currentUser ? (<div>  <Instructions /> <Button onClick={this.switchButton} onClick={this.initiateGame}> Start New Game </Button></div>) : <Instructions />}
           </div>
           {this.state.start ?  
             (<MainContainer currentUser={this.state.currentUser}/>) : null}
