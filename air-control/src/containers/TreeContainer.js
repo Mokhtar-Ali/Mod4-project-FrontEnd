@@ -14,16 +14,20 @@ class TreeContainer extends React.Component {
     this.setState({treesNum: this.state.treesNum + 1})
   }
 
-
-
-
+  
   render(){
+
     return (
       <div className="tree-container">
         <h1>Tree Container</h1>
-        {/* <p> {this.props.treesNum} </p> INSTEAD OF THE NUMBER OF TREES, WE SHOULD SEE EACH INDIVUAL IMAGE OF TREE */} 
 
-        <Tree />
+        {/* <p> {this.props.treesNum} </p> INSTEAD OF THE NUMBER OF TREES, WE SHOULD SEE EACH INDIVUAL IMAGE OF TREE  */}
+
+        {this.props.trees.map(tree => 
+      <Tree 
+      tree={tree}
+      key={tree.id}/>
+    )}
       </div>
     );
 
