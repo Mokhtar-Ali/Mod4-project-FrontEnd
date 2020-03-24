@@ -10,6 +10,11 @@ class LoginForm extends React.Component {
         password: ''
     }
 
+    componentWillUnmount() {
+        let form = document.findDOMNode(this);
+        document.destroy(form);
+    }
+
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }

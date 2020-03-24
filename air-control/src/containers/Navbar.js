@@ -18,13 +18,13 @@ const NavBar = (props) => {
         </div>
         <Router>
           <NavLink to='/'> Home </NavLink>
-          <div class="navbar-inner" style={{float:" right"}}>  
+          
           {(props.currentUser) ? null : <NavLink to='/login'> Login </NavLink>}
           {(props.currentUser) ? null : <NavLink to='/signup'> Signup </NavLink>}
             <Route path="/login" render={() => <LoginForm setUser={props.setUser} />} />
             <Route path="/signup" render={() => (!props.currentUser) ? <Signup setUser={props.setUser} /> : null} />
             {props.currentUser ? <Link onClick={props.logout} >Logout</Link> : null}
-          </div>
+          
         </Router>
       </div>
     // </div>

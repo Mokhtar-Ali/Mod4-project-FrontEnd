@@ -1,7 +1,7 @@
 - Once sign up => should have default value of trees and atmosphere 
 
 
-STYLING 
+** STYLING => Nav Bar right and left for BootStrap 
 
 make background image fit entire page
 
@@ -17,5 +17,7 @@ can change the scale of size for it when it is planted as a new tree, then mediu
 image for cut logs -https://media.istockphoto.com/vectors/stack-of-nine-wooden-logs-vector-id472399302?k=6&m=472399302&s=612x612&w=0&h=iPu8q_fgft0sczEmYGGcGsERo3c1nYzyc-cg-S3hdxw=
 
 
-weather state ranges from sunny, rainy, cloudy, snowy
-temperature state ranges from 20 deg to 80 deg
+
+### Done:
+- √ weather state ranges from sunny, rainy, cloudy, snowy
+- √ temperature state ranges from 20 deg to 80 deg
