@@ -13,24 +13,6 @@ class StatsContainer extends React.Component {
     this.updateOxygen();
   }
 
-  // displayAtmosphere = () => {
-  //   // const oxygen = this.state.oxygen;
-  //   // const carbon_dioxide = this.state.carbon_dioxide;
-  //   if (this.props.cutTree) {
-  //     this.setState(previousState => {
-  //       return {
-  //         carbon_dioxide: previousState.carbon_dioxide + 2
-  //       };
-  //     });
-  //   } else {
-  //     this.setState(previousState => {
-  //       return {
-  //         oxygen: previousState.oxygen + 3
-  //       };
-  //     });
-  //   }
-  // };
-
   updateOxygen = () => {
     this.setState(previousState => {
       return {

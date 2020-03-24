@@ -23,21 +23,25 @@ class LoginForm extends React.Component {
                 "Accept": "application/json"
             }, 
             body: JSON.stringify(this.state)
+            
         }).then(res => res.json())
         .then(response => {
           if (response.errors){
             alert(response.errors)
           } else {
             this.props.setUser(response)
+            window.close()
           }
         })
         this.setState({name: '', password: ''})
+        
       }
 
 
     render() {
         return (
             <div className="Login">
+                <h3>Log In To Play</h3>
                 <form onSubmit={this.handleSubmit} id='form'>
                     <FormGroup controlId="email" bssize="large">
                         <label>Name</label>

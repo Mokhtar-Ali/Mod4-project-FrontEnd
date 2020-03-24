@@ -1,9 +1,8 @@
-import React, {Component} from "react";
+import React from "react";
 import "./App.css";
 import MainContainer from "./containers/MainContainer";
 import NavBar from "./containers/Navbar";
 import Instructions from "./components/Instructions"
-import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css' // bootstrap 
 import { Button } from 'react-bootstrap' // bootstrap buttons
@@ -59,14 +58,16 @@ class App extends React.Component {
   render() {
     
     return(
-      <Router>
+      <div>
+        <NavBar setUser={this.setUser} logout={this.logout} currentUser={this.state.currentUser}/>
         <div>
-          <NavBar setUser={this.setUser} logout={this.logout} currentUser={this.state.currentUser}/>
+          <div>
+          {this.state.currentUser ? (<div>  <Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>) : <Instructions />}
+          </div>
           {this.state.start ?  
-            (<MainContainer currentUser={this.state.currentUser}/>) : 
-            (<div><Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>)}
+            (<MainContainer currentUser={this.state.currentUser}/>) : null}
         </div>
-      </Router>
+        </div>
     )
   }
 
