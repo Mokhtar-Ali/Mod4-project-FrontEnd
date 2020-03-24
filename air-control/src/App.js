@@ -62,9 +62,9 @@ class App extends React.Component {
       <Router>
         <div>
           <NavBar setUser={this.setUser} logout={this.logout} currentUser={this.state.currentUser}/>
+          {this.state.currentUser ? (<div>  <Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>) : <Instructions />}
           {this.state.start ?  
-            (<MainContainer currentUser={this.state.currentUser}/>) : 
-            (<div><Instructions /> <Button onClick={this.switchButton}> Start New Game </Button></div>)}
+            (<MainContainer currentUser={this.state.currentUser}/>) : null}
         </div>
       </Router>
     )

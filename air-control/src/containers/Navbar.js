@@ -4,12 +4,18 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import 'react-bootstrap/Navbar' // css 
 import LoginForm from '../components/LoginForm'
 import Signup from "../components/Signup";
-// comment
+import "../App.css";
 
 const NavBar = (props) => {
   return (
-
-    <div >
+    
+    
+    <div className="navbar" >
+      <div className="top">
+        <div className="home-button">
+            <img src="https://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/512/22330-deciduous-tree-icon.png" alt='Air Control' className="logo"/> 
+        </div>
+        
       <NavLink to='/'> Home </NavLink>
       {(props.currentUser) ? null : <NavLink to='/login'> Login </NavLink>}
       {(props.currentUser) ? null : <NavLink to='/signup'> Signup </NavLink>}
@@ -22,8 +28,22 @@ const NavBar = (props) => {
         render={() => (!props.currentUser) ? <Signup setUser={props.setUser}/> : null}
       />
       {props.currentUser ? <button onClick={props.logout} >Logout</button> : null}
+      </div>
     </div>
   )
 } 
 
 export default NavBar;
+
+// return (
+    //   <div className="navbar">
+    //     <div className="top">
+    //       <HomeButton />
+    //       <SearchBar handleChange={props.handleChange} searchTerm={props.searchTerm}/>
+    //       <UserControls logout={props.logout} currentUser={props.currentUser} />
+    //     </div>
+    //     <div className="bottom">
+    //       <FilterBar cardMode={props.cardMode} listMode={props.listMode}/>
+    //     </div>
+    //   </div>
+    // )
