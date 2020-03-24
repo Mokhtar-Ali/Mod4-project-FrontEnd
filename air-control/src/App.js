@@ -11,21 +11,11 @@ class App extends React.Component {
 
   state = {
     start: false,
-    currentUser: null,
-    atmosphere: null
-
+    currentUser: null
   }
 
   initiateGame = () => {
-    fetch('http://localhost:3000/atmospheres', {
-      method: 'Post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({user_id: this.state.currentUser.id})
-    }).then(resp => resp.json())
-    .then(response => this.setState({atmosphere: response}))
-    .then(console.log)
+    this.setState({start: true})
   }
 
   componentDidMount() {
@@ -46,9 +36,9 @@ class App extends React.Component {
     }
   }
 
-  switchButton = () => {
-    this.setState({start: true})
-  }
+  // switchButton = () => {          // added it to initiate game 
+  //   this.setState({start: true})
+  // }
 
   setUser = (user) => {
     this.setState({
@@ -78,7 +68,7 @@ class App extends React.Component {
           {this.state.start ? null : this.state.currentUser ? (<div>  <Instructions /> <Button onClick={this.switchButton} onClick={this.initiateGame}> Start New Game </Button></div>) : <Instructions />}
           </div>
           {this.state.start ?  
-            (<MainContainer currentUser={this.state.currentUser}/>) : null}
+            (<MainContainer currentUser={this.state.currentUser} atmosphere={this.state.atmosphere}/>) : null}
         </div>
         </div>
     )

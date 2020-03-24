@@ -9,19 +9,30 @@ const TreesApi = "http://localhost:3000/trees"
 
 class MainContainer extends React.Component {
   state = {
-    user:null,
     trees: [],
-    treesNum: 0
+    treesNum: 0,
+    atmosphere: null
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/users/${this.props.currentUser.id}`)
-      .then(response => response.json())
-      .then(response => this.setState({ user: response, trees: response.trees, treesNum: response.trees.length}))
+    fetch('http://localhost:3000/atmospheres', {
+      method: 'Post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({user_id: this.props.currentUser.id})
+    }).then(resp => resp.json())
+    .then(response => this.setState({atmosphere: response, trees: response.trees, treesNum: 10}))
+  //   fetch(`http://localhost:3000/users/${this.props.currentUser.id}`)
+  //     .then(response => response.json())
+  //     .then(response => this.setState({ user: response, trees: response.atmosphere.trees, treesNum: response.response.trees.length}))
   }
 
   plantTree = () => { // plnt a tree will make a post fetch 
-    let data = { user_id: this.state.user.id, atmosphere_id: 1, image: ' ' }
+    if (!this.state.trees) {
+      this.setState({trees: this.state.atmosphere.trees, treesNum: this.state.atmosphere.trees})
+    }
+    let data = {atmosphere_id: this.state.atmosphere.id}
     console.log('start fetching', data);
     fetch( TreesApi, { // changed to trees instead of users
       method: 'POST',
@@ -37,7 +48,7 @@ class MainContainer extends React.Component {
     })
   }
 
-  cutTree = () => {  // need to work on it more 
+  cutTree = () => {   
     console.log('cutting tree')
     let trees2 = [...this.state.trees] // copying main array of trees
     let treeId = trees2[0].id  // getting id 
