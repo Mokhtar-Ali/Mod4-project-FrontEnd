@@ -7,6 +7,7 @@ class Weather extends React.Component {
   componentDidMount() {
     this.displayWeather();
   }
+  
   displayWeather = () => {
     const weather = ["Sunny  ☀️", "Rainy  🌧", "Cloudy  🌫", "Snowy  ❄️"];
     const randomCondition = weather[Math.floor(Math.random() * weather.length)];

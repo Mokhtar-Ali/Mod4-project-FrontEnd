@@ -6,13 +6,13 @@ import "../Css/MainContainer.css"
 
 class TreeContainer extends React.Component {
 
-  state = {
-    treesNum: this.props.trees.length
-  }
+  // state = {
+  //   treesNum: this.props.trees.length
+  // }
 
-  increaseTrees = () => {
-    this.setState({treesNum: this.state.treesNum + 1})
-  }
+  // increaseTrees = () => {
+  //   this.setState({treesNum: this.state.treesNum + 1})
+  // }
 
   
   render(){
@@ -20,8 +20,6 @@ class TreeContainer extends React.Component {
     return (
       <div className="tree-container">
         <h1>Tree Container</h1>
-
-        {/* <p> {this.props.treesNum} </p> INSTEAD OF THE NUMBER OF TREES, WE SHOULD SEE EACH INDIVUAL IMAGE OF TREE  */}
 
         {this.props.trees.map(tree => 
       <Tree 

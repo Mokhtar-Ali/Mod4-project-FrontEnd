@@ -1,4 +1,6 @@
 import React from 'react'
+// import adult-pine-tree from 'public/game-icons/adult-pine-tree.jpeg'
+
 
 function Tree() {
   return (

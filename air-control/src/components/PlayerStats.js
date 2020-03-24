@@ -16,7 +16,7 @@ render() {
     <div className="player-stats">
       <p>Player: {this.props.user.name}</p>
       <p>Trees Planted: {this.props.treesNum} </p>
-      <p>Trees Cut: </p>
+      <p>Trees Chopped Down: </p>
     </div>
   );
 
