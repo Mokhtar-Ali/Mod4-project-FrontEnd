@@ -8,7 +8,7 @@ import Tools from "../components/Tools"
 function StatsContainer(props) {
   return (
     <div className="stats-container">
-        <PlayerStats user={props.user}/>
+        <PlayerStats user={props.user} treesNum={props.treesNum} cutTree={props.cutTree} plantTree={props.plantTree} trees={props.trees}/>
         <Weather />
         <AirQualityLevel />
         <Tools plantTree={props.plantTree} cutTree={props.cutTree}/>

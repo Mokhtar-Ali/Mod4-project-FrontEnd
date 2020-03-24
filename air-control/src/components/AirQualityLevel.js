@@ -4,7 +4,9 @@ import "../Css/MainContainer.css"
 function AirQualityLevel() {
   return (
     <div className="air-quality-level">
-      <h1>AirQualityLevel</h1>
+      <h6>Air Quality Monitor</h6>
+      <p>Oxygen:</p>
+      <p>Carbon Dioxide:</p>
     </div>
   );
 }

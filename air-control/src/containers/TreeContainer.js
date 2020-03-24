@@ -21,7 +21,8 @@ class TreeContainer extends React.Component {
     return (
       <div className="tree-container">
         <h1>Tree Container</h1>
-        <p> {this.props.treesNum} </p>
+        {/* <p> {this.props.treesNum} </p> INSTEAD OF THE NUMBER OF TREES, WE SHOULD SEE EACH INDIVUAL IMAGE OF TREE */} 
+
         <Tree />
       </div>
     );
