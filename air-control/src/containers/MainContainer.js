@@ -11,32 +11,21 @@ class MainContainer extends React.Component {
   state = {
     trees: [],
     treesNum: 0,
+    atmosphere: null
   }
 
   componentDidMount() {
-
-    // fetch('http://localhost:3000/atmospheres', {
-    //   method: 'Post',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({user_id: this.props.currentUser.id})
-    // }).then(resp => resp.json())
-    // .then(resp => console.log(resp))
-    // .then(response => this.setState({atmosphere: response, trees: response.trees, treesNum: 10}))
-    
-  //   fetch(`http://localhost:3000/users/${this.props.currentUser.id}`)
-  //     .then(response => response.json())
-  //     .then(response => this.setState({ user: response, trees: response.atmosphere.trees, treesNum: response.response.trees.length}))
+    this.setState({
+      trees: [...this.props.trees],
+      atmosphere: {...this.props.atmosphere},
+      treesNum: this.props.trees.length
+    })
   }
 
   plantTree = () => { // plnt a tree will make a post fetch 
-    if (!this.state.trees) {
-      this.setState({trees: this.state.atmosphere.trees, treesNum: this.state.atmosphere.trees})
-    }
     let data = {atmosphere_id: this.state.atmosphere.id}
-    console.log('start fetching', data);
-    fetch( TreesApi, { // changed to trees instead of users
+    // console.log('start fetching', data);
+    fetch( TreesApi, { // 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -57,19 +46,29 @@ class MainContainer extends React.Component {
     let tree = trees2.find(t => t.id === treeId) // getting the tree obj
     let index = trees2.indexOf(tree) // find index
     trees2.splice(index , 1) // remove tree from copied array 
-  
- 
+
     fetch(`http://localhost:3000/trees/${treeId}`, {
       method: 'DELETE'
     })
     this.setState({trees: trees2, treesNum: trees2.length})
     
   }
+
+  waterTree = () => { // will pick a tree && do fetch PATCH on that tree, conditinal to check which tree' size is small first & medium second 
+    let smallTrees = this.state.trees.filter(tree => tree.size === 'small')
+    let mediumTrees = this.state.trees.filter(tree => tree.size === 'medium')
+
+    if (smallTrees) {
+      let id = smallTrees[0].id 
+      
+    }
+  }
  
 
 
   render() {
-    console.log(this.props.trees);
+    console.log('props', this.props.trees);
+    console.log('state', this.state.trees);
     // console.log(this.state.treesNum);
     // console.log(this.state.atmosphere)
     return (
