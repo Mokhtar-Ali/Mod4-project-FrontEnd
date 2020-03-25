@@ -12,7 +12,8 @@ class App extends React.Component {
   state = {
     start: false,
     currentUser: null,
-    atmosphere: null
+    atmosphere: null,
+    trees: []
   }
 
   componentDidMount() {
@@ -41,7 +42,7 @@ class App extends React.Component {
         },
         body: JSON.stringify({user_id: this.state.currentUser.id})
       }).then(resp => resp.json())
-      .then(response => this.setState({atmosphere: response,start: true}))
+      .then(response => this.setState({atmosphere: response, trees: response.trees, start: true}))
   }
 
   
@@ -69,7 +70,8 @@ class App extends React.Component {
       )}
 
   render() {
-    // console.log(this.state.atmosphere);
+    // console.log('atmosphere', this.state.atmosphere);
+    // console.log('trees', this.state.trees);
     // console.log(this.state.currentUser.atmospheres);
     
     return(
@@ -80,7 +82,7 @@ class App extends React.Component {
           {this.state.start ? null : this.state.currentUser ? (<div>  <Instructions /> <Button onClick={this.initiateGame}> Start New Game </Button></div>) : <Instructions />}
           </div>
           {this.state.start ?  
-            (<MainContainer currentUser={this.state.currentUser} atmosphere={this.state.atmosphere}/>) : null}
+            (<MainContainer currentUser={this.state.currentUser} atmosphere={this.state.atmosphere} trees={this.state.trees}/>) : null}
         </div>
         </div>
     )

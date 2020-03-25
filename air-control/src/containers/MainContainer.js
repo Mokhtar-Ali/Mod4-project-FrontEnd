@@ -69,7 +69,7 @@ class MainContainer extends React.Component {
 
 
   render() {
-    console.log(this.props.atmosphere.trees);
+    console.log(this.props.trees);
     // console.log(this.state.treesNum);
     // console.log(this.state.atmosphere)
     return (
