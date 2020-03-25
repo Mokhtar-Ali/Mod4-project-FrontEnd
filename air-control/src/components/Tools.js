@@ -2,7 +2,7 @@ import React from 'react'
 
 function Tools(props) {
 
-    console.log(props.cutTree, "cutting tree?")
+    // console.log(props.cutTree, "cutting tree?")
   return (
     <div className="tools">
       <h6>Tools</h6>

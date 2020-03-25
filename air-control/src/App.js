@@ -11,11 +11,8 @@ class App extends React.Component {
 
   state = {
     start: false,
-    currentUser: null
-  }
-
-  initiateGame = () => {
-    this.setState({start: true})
+    currentUser: null,
+    atmosphere: null
   }
 
   componentDidMount() {
@@ -35,6 +32,19 @@ class App extends React.Component {
       })
     }
   }
+
+  initiateGame = () => {
+      fetch('http://localhost:3000/atmospheres', {
+        method: 'Post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({user_id: this.state.currentUser.id})
+      }).then(resp => resp.json())
+      .then(response => this.setState({atmosphere: response,start: true}))
+  }
+
+  
 
   // switchButton = () => {          // added it to initiate game 
   //   this.setState({start: true})
@@ -59,13 +69,15 @@ class App extends React.Component {
       )}
 
   render() {
+    // console.log(this.state.atmosphere);
+    // console.log(this.state.currentUser.atmospheres);
     
     return(
       <div>
         <NavBar setUser={this.setUser} logout={this.logout} currentUser={this.state.currentUser}/>
         <div>
           <div>
-          {this.state.start ? null : this.state.currentUser ? (<div>  <Instructions /> <Button onClick={this.switchButton} onClick={this.initiateGame}> Start New Game </Button></div>) : <Instructions />}
+          {this.state.start ? null : this.state.currentUser ? (<div>  <Instructions /> <Button onClick={this.initiateGame}> Start New Game </Button></div>) : <Instructions />}
           </div>
           {this.state.start ?  
             (<MainContainer currentUser={this.state.currentUser} atmosphere={this.state.atmosphere}/>) : null}

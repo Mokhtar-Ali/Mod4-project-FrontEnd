@@ -11,18 +11,20 @@ class MainContainer extends React.Component {
   state = {
     trees: [],
     treesNum: 0,
-    atmosphere: null
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/atmospheres', {
-      method: 'Post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({user_id: this.props.currentUser.id})
-    }).then(resp => resp.json())
-    .then(response => this.setState({atmosphere: response, trees: response.trees, treesNum: 10}))
+
+    // fetch('http://localhost:3000/atmospheres', {
+    //   method: 'Post',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({user_id: this.props.currentUser.id})
+    // }).then(resp => resp.json())
+    // .then(resp => console.log(resp))
+    // .then(response => this.setState({atmosphere: response, trees: response.trees, treesNum: 10}))
+    
   //   fetch(`http://localhost:3000/users/${this.props.currentUser.id}`)
   //     .then(response => response.json())
   //     .then(response => this.setState({ user: response, trees: response.atmosphere.trees, treesNum: response.response.trees.length}))
@@ -67,8 +69,9 @@ class MainContainer extends React.Component {
 
 
   render() {
-    // console.log(this.state.user);
-    // console.log(this.state.trees);
+    console.log(this.props.atmosphere.trees);
+    // console.log(this.state.treesNum);
+    // console.log(this.state.atmosphere)
     return (
       <div className="main-container">
         <StatsContainer user={this.props.currentUser} cutTree={this.cutTree} plantTree={this.plantTree} treesNum={this.state.treesNum} trees={this.state.trees} />
