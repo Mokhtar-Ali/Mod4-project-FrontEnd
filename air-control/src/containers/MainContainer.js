@@ -60,7 +60,6 @@ class MainContainer extends React.Component {
     let smallTrees = this.state.trees.filter(tree => tree.size === 'small')
     let mediumTrees = this.state.trees.filter(tree => tree.size === 'medium')
 
-
     if (smallTrees) {
       let data = {size: 'medium', oxygen: 5, carbon_dioxide: -4, firewood: 1}
       let id = smallTrees[0].id 
@@ -71,17 +70,17 @@ class MainContainer extends React.Component {
         'Accept': 'application/json'
       },
       body: JSON.stringify(data)
-    }).then(resp => resp.json())
+    })//.then(resp => resp.json())
     .then(response => {
       let trees2 = [...this.state.trees]
-      let tree = trees2.find(t => t.id === response.id)
-      let index = trees2.findIndex(tree)
+      let index = trees2.findIndex(t => t.id === id)
       trees2.splice(index , 1, response)
-      // tree.size = 'medium'
-      // tree.oxygen = 5
-      // tree.carbon_dioxide = -4
-      // tree.firewood = 1
       this.setState({trees: trees2})
+      // let tree = trees2.filter(t => t.id === response.id)
+      //   let idx = pizzas2.findIndex(pizza => pizza.id === id)
+      //   pizzas2[idx] = body
+      //   this.setState({pizzas: pizzas2})
+      // debugger
     })
     }
   }
@@ -90,7 +89,7 @@ class MainContainer extends React.Component {
 
   render() {
     // console.log('props', this.props.trees);
-    // console.log('state', this.state.trees);
+    console.log('state', this.state.trees);
     // console.log(this.state.treesNum);
     // console.log(this.state.atmosphere.oxygen)
     return (
