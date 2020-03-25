@@ -11,14 +11,18 @@ class MainContainer extends React.Component {
   state = {
     trees: [],
     treesNum: 0,
-    atmosphere: null
+    atmosphere: null,
+    plantedTrees: 0,
+    choppedTrees: 0
   }
 
   componentDidMount() {
     this.setState({
       trees: [...this.props.trees],
       atmosphere: {...this.props.atmosphere},
-      treesNum: this.props.trees.length
+      treesNum: this.props.trees.length,
+      plantedTrees: this.props.trees.length,
+      choppedTrees: 0
     })
   }
 
@@ -35,7 +39,7 @@ class MainContainer extends React.Component {
     .then(tree => {
       let trees2 = [...this.state.trees]
       trees2.push(tree)
-      this.setState({trees: trees2, treesNum: trees2.length})
+      this.setState({trees: trees2, treesNum: trees2.length, plantedTrees: this.state.plantedTrees + 1})
     })
   }
 
@@ -49,7 +53,7 @@ class MainContainer extends React.Component {
     fetch(`http://localhost:3000/trees/${treeId}`, {
       method: 'DELETE'
     })
-    this.setState({trees: trees2, treesNum: trees2.length})
+    this.setState({trees: trees2, treesNum: trees2.length, choppedTrees: this.state.choppedTrees + 1})
   }
 
   waterTree = () => { // will pick a tree && do fetch PATCH on that tree, conditinal to check which tree' size is small first & medium second 
@@ -85,14 +89,14 @@ class MainContainer extends React.Component {
 
 
   render() {
-    console.log('props', this.props.trees);
-    console.log('state', this.state.trees);
+    // console.log('props', this.props.trees);
+    // console.log('state', this.state.trees);
     // console.log(this.state.treesNum);
-    // console.log(this.state.atmosphere)
+    // console.log(this.state.atmosphere.oxygen)
     return (
       <div className="main-container">
-        <StatsContainer user={this.props.currentUser} cutTree={this.cutTree} plantTree={this.plantTree} treesNum={this.state.treesNum} trees={this.state.trees} waterTree={this.waterTree} />
-        <TreeContainer user={this.props.currentUser} trees={this.state.trees} plantTree={this.plantTree} treesNum={this.state.treesNum} cutTree={this.cutTree}/>
+        <StatsContainer atmosphere={this.state.atmosphere} user={this.props.currentUser} cutTree={this.cutTree} plantTree={this.plantTree} treesNum={this.state.treesNum} trees={this.state.trees} waterTree={this.waterTree} plantedTrees={this.state.plantedTrees} choppedTrees={this.state.choppedTrees}/>
+        <TreeContainer user={this.props.currentUser} trees={this.state.trees} treesNum={this.state.treesNum} />
         <FirewoodContainer />
       </div>
     );

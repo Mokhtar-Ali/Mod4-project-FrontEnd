@@ -1,19 +1,33 @@
 import React from "react";
 import "../Css/MainContainer.css";
 
-function AirQualityLevel(props) {
+class AirQualityLevel extends React.Component {
 
-    return (
-      <div className="air-quality-level">
-        <h6>Air Quality Monitor</h6>
-        <p>
-          O₂: {props.oxygen} {props.displayAtmosphere}
-        </p>
-        <p>
-          CO₂: {props.carbon_dioxide} {props.displayAtmosphere}
-        </p>
-      </div>
-    );
+  state = {
+    atmosphere: null
+  }
+
+  componentDidMount() {
+    this.setState({atmosphere: {...this.props.atmosphere}})
+  }
+
+  
+  render() {
+    // console.log(this.state.atmosphere)
+      return (
+        
+        <div className="air-quality-level">
+          <h6>Air Quality Monitor</h6>
+          <p>
+            {/* O₂: {props.atmosphere.oxygen}  */}
+          </p>
+          <p>
+            {/* CO₂: {props.atmosphere.carbon_dioxide} */}
+          </p>
+        </div>
+      );
+    
+  }
   }
 
 export default AirQualityLevel;

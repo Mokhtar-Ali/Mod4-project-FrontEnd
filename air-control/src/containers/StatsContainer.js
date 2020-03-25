@@ -6,11 +6,12 @@ import "../Css/MainContainer.css";
 import Tools from "../components/Tools";
 
 class StatsContainer extends React.Component {
-  state = { oxygen: 30, carbon_dioxide: 25 };
+  state = { oxygen: 0, carbon_dioxide: 0 };
 
   componentDidMount() {
-    this.updateCO2();
-    this.updateOxygen();
+    // setState({oxygen: this.props.atmosphere.oxygen, carbon_dioxide: this.props.atmosphere.carbon_dioxide})
+    // this.updateCO2();
+    // this.updateOxygen();
   }
 
   updateOxygen = () => {
@@ -30,31 +31,30 @@ class StatsContainer extends React.Component {
   };
 
   render() {
-    const { user, treesNum, cutTree, plantTree, trees, waterTree} = this.props;
+    // console.log(this.props.atmosphere, "atmosphere?")
+    const { user, treesNum, cutTree, plantTree, trees, waterTree, atmosphere} =this.props;
     return (
       <div className="stats-container">
         <PlayerStats
           user={user}
-          treesNum={treesNum}
-          cutTree={cutTree}
-          plantTree={plantTree}
-          trees={trees}
+          plantedTrees={this.props.plantedTrees} 
+          choppedTrees={this.props.choppedTrees}
         />
         <Weather />
         <AirQualityLevel
           oxygen={this.state.oxygen}
           carbon_dioxide={this.state.carbon_dioxide}
-          plantTree={plantTree}
-          cutTree={cutTree}
           updateOxygen={this.updateOxygen}
           updateCO2={this.updateCO2}
+          trees={trees}
+          atmosphere={this.props.atmosphere}
+          
           
         />
         <Tools
           plantTree={plantTree}
           cutTree={cutTree}
-          updateOxygen={this.updateOxygen}
-          updateCO2={this.updateCO2}
+          waterTree={waterTree}
         />
       </div>
     );
