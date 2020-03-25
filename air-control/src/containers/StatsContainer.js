@@ -30,7 +30,7 @@ class StatsContainer extends React.Component {
   };
 
   render() {
-    const { user, treesNum, cutTree, plantTree, trees } = this.props;
+    const { user, treesNum, cutTree, plantTree, trees, waterTree} = this.props;
     return (
       <div className="stats-container">
         <PlayerStats

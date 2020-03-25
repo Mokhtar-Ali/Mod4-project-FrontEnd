@@ -4,7 +4,7 @@ import "../Css/MainContainer.css"
 class PlayerStats extends React.Component {
 
   state = {
-    treesNum: this.props.trees.length
+    // treesNum: this.props.trees.length
   }
 
   increaseTrees = () => {
