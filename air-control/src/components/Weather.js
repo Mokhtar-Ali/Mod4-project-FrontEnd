@@ -31,13 +31,9 @@ class Weather extends React.Component {
     }
   };
 
-  waterTree = () => {
-    
-  }
-
   render() {
     // console.log(this.state.temperature, 'THIS IS THE TEMP');
-    console.log(this.state.weather);
+    // console.log(this.state.weather);
     // console.log(this.displayWeather);
     return (
       <div className="weather">

@@ -7,10 +7,10 @@ function AirQualityLevel(props) {
       <div className="air-quality-level">
         <h6>Air Quality Monitor</h6>
         <p>
-          O₂: {props.oxygen} {props.displayAtmosphere}
+          O₂: {props.oxygen} 
         </p>
         <p>
-          CO₂: {props.carbon_dioxide} {props.displayAtmosphere}
+          CO₂: {props.carbon_dioxide}
         </p>
       </div>
     );
