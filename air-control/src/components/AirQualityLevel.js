@@ -22,7 +22,7 @@ class AirQualityLevel extends React.Component {
             O₂: {this.props.atmosphere? this.props.atmosphere.oxygen : 0} 
           </p>
           <p>
-            {/* CO₂: {props.atmosphere.carbon_dioxide} */}
+            CO₂: {this.props.atmosphere? this.props.atmosphere.carbon_dioxide : 0} 
           </p>
         </div>
       );
