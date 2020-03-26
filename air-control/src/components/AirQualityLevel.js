@@ -13,7 +13,7 @@ class AirQualityLevel extends React.Component {
 
   
   render() {
-    if (this.props.atmosphere){console.log(this.props.atmosphere.oxygen)}
+   
       return (
         
         <div className="air-quality-level">

@@ -13,7 +13,8 @@ class MainContainer extends React.Component {
     treesNum: 0,
     atmosphere: null,
     plantedTrees: 0,
-    choppedTrees: 0
+    choppedTrees: 0,
+    firewoodCount: 0
   }
 
   componentDidMount() {
@@ -53,7 +54,7 @@ class MainContainer extends React.Component {
     fetch(`http://localhost:3000/trees/${treeId}`, {
       method: 'DELETE'
     })
-    this.setState({trees: trees2, treesNum: trees2.length, choppedTrees: this.state.choppedTrees + 1})
+    this.setState({trees: trees2, treesNum: trees2.length, choppedTrees: this.state.choppedTrees + 1, firewoodCount: this.state.firewoodCount + 1})
   }
 
   waterTree = () => { // will pick a tree && do fetch PATCH on that tree, conditinal to check which tree' size is small first & medium second 
@@ -70,17 +71,13 @@ class MainContainer extends React.Component {
         'Accept': 'application/json'
       },
       body: JSON.stringify(data)
-    })//.then(resp => resp.json())
+    }).then(resp => resp.json())
     .then(response => {
       let trees2 = [...this.state.trees]
       let index = trees2.findIndex(t => t.id === id)
       trees2.splice(index , 1, response)
-      this.setState({trees: trees2})
-      // let tree = trees2.filter(t => t.id === response.id)
-      //   let idx = pizzas2.findIndex(pizza => pizza.id === id)
-      //   pizzas2[idx] = body
-      //   this.setState({pizzas: pizzas2})
       // debugger
+      this.setState({trees: trees2})
     })
     }
   }
@@ -89,14 +86,14 @@ class MainContainer extends React.Component {
 
   render() {
     // console.log('props', this.props.trees);
-    console.log('state', this.state.trees);
+    // console.log('state', this.state.firewoodCount);
     // console.log(this.state.treesNum);
     // console.log(this.state.atmosphere.oxygen)
     return (
       <div className="main-container">
         <StatsContainer atmosphere={this.state.atmosphere} user={this.props.currentUser} cutTree={this.cutTree} plantTree={this.plantTree} treesNum={this.state.treesNum} trees={this.state.trees} waterTree={this.waterTree} plantedTrees={this.state.plantedTrees} choppedTrees={this.state.choppedTrees}/>
-        <TreeContainer user={this.props.currentUser} trees={this.state.trees} treesNum={this.state.treesNum} />
-        <FirewoodContainer />
+        <TreeContainer user={this.props.currentUser} trees={this.state.trees} treesNum={this.state.treesNum} atmosphere={this.state.atmosphere}/>
+        <FirewoodContainer firewoodCount={this.state.firewoodCount}/>
       </div>
     );
   }
