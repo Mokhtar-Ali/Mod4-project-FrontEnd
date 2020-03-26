@@ -3,14 +3,23 @@ import "../Css/MainContainer.css";
 
 class AirQualityLevel extends React.Component {
 
-  state = { 
-    // atmosphere: null
-  }
+  state = { oyxgen: 0, carbon_dioxide: 0}
 
-  // componentDidMount() {
-  //   this.setState({atmosphere: {...this.props.atmosphere}})
-  // }
+calculateOxygen = () => {
+  let oxygenNum = 0
+  this.props.trees.forEach(tree => {
+    oxygenNum += tree.oxygen
+  })
+  return oxygenNum
+}
 
+calculateCo2 = () => {
+  let co2 = 30
+  this.props.trees.forEach(tree => {
+    co2 += tree.carbon_dioxide
+  })
+  return co2
+}
   
   render() {
    
@@ -19,10 +28,10 @@ class AirQualityLevel extends React.Component {
         <div className="air-quality-level">
           <h6>Air Quality Monitor</h6>
           <p>
-            O₂: {this.props.atmosphere? this.props.atmosphere.oxygen : 0} 
+            O₂: {this.calculateOxygen()}
           </p>
           <p>
-            CO₂: {this.props.atmosphere? this.props.atmosphere.carbon_dioxide : 0} 
+            CO₂: {this.calculateCo2()}
           </p>
         </div>
       );
