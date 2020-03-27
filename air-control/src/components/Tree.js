@@ -6,7 +6,7 @@ function Tree(props) {
   
   return (
     <div className="tree">
-      <img src={props.tree.image} height='50px' /> 
+      <img src={props.tree.image} height='90px' /> 
     </div>
   )
 }
