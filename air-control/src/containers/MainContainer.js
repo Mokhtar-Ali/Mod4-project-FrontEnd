@@ -126,6 +126,7 @@ class MainContainer extends React.Component {
   render() {
     return (
       <div className="main-container">
+        <div>
         <StatsContainer
           atmosphere={this.state.atmosphere}
           user={this.props.currentUser}
@@ -137,14 +138,18 @@ class MainContainer extends React.Component {
           plantedTrees={this.state.plantedTrees}
           choppedTrees={this.state.choppedTrees}
         />
+          </div>
+        <div className="wrappers">
+        <FirewoodContainer firewoodCount={this.state.firewoodCount} />
         <TreeContainer
           user={this.props.currentUser}
           trees={this.state.trees}
           treesNum={this.state.treesNum}
           atmosphere={this.state.atmosphere}
         />
-        <FirewoodContainer firewoodCount={this.state.firewoodCount} />
+        
       </div>
+        </div>
     );
   }
 }

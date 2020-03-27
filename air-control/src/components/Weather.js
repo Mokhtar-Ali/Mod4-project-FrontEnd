@@ -14,7 +14,6 @@ class Weather extends React.Component {
     this.setState({ weather: randomCondition });
 
     if (randomCondition === "Sunny  ☀️") {
-      // Math.floor(Math.random() * (90 - 50) ) + 50
       this.setState({
         temperature: Math.floor(Math.random() * (90 - 50)) + 50
       });
@@ -32,9 +31,7 @@ class Weather extends React.Component {
   };
 
   render() {
-    // console.log(this.state.temperature, 'THIS IS THE TEMP');
-    // console.log(this.state.weather);
-    // console.log(this.displayWeather);
+
     return (
       <div className="weather">
         <h6>Current conditions</h6>
