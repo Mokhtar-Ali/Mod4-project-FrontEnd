@@ -4,7 +4,8 @@ import React from "react";
 function Instructions () {
   return(
       <div>
-        <h2>Instructions</h2>
+        <h2>Welcome to the Air Patrol Game!</h2>
+        <h5>Instructions</h5>
         <p>You are the environmental manager and your highest duty is to keep the air quality under control so your citizens can breath clearn air.</p>
         <p>You must monitor the oxygen and carbon dioxide output once a tree has been planted or removed.</p>
         <p>The weather and external factors will influence your decisions whether you need to plant or cut down a tree.</p>
