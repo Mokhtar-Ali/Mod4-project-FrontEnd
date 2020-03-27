@@ -121,12 +121,12 @@ class MainContainer extends React.Component {
     } else {
       alert("All trees have been watered!😁");
     }
-  };
+  }; 
 
   render() {
     return (
       <div className="main-container">
-        <div>
+        <div className='top'>
         <StatsContainer
           atmosphere={this.state.atmosphere}
           user={this.props.currentUser}
