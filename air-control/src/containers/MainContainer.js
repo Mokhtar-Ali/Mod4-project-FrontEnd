@@ -69,7 +69,7 @@ class MainContainer extends React.Component {
         firewoodCount: this.state.firewoodCount + 1
       });
     } else {
-      alert("You cut down all the trees😭");
+      alert("You cut down all the trees 😭 Sorry, you lose!");
     }
   };
 
@@ -119,7 +119,7 @@ class MainContainer extends React.Component {
           this.setState({ trees: trees2 });
         });
     } else {
-      alert("All trees have been watered!😁");
+      alert("All trees have been watered and there's more oxygen for everybody!😁");
     }
   };
 
