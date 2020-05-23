@@ -17,10 +17,10 @@ const NavBar = (props) => {
           <img src="https://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/512/22330-deciduous-tree-icon.png" alt='Air Control' className="logo" />
         </div>
       
-          <NavLink to='/'> Home </NavLink>
+          <NavLink style={{marginLeft:'10px'}} to='/'> Home </NavLink>
           
-          {(props.currentUser) ? null : <NavLink to='/login'> Login </NavLink>}
-          {(props.currentUser) ? null : <NavLink to='/signup'> Signup </NavLink>}
+          {(props.currentUser) ? null : <NavLink style={{marginLeft:'10px'}} to='/login'> Login </NavLink>}
+          {(props.currentUser) ? null : <NavLink style={{marginLeft:'10px'}} to='/signup'> Signup </NavLink>}
             <Route exact path="/login" render={() => <LoginForm setUser={props.setUser} />} />
             <Route exact path="/signup" render={() => (!props.currentUser) ? <Signup setUser={props.setUser} /> : null} />
             {props.currentUser ? <Link onClick={props.logout} >Logout</Link> : null}

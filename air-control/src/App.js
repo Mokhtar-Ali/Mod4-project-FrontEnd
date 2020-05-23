@@ -76,7 +76,7 @@ class App extends React.Component {
     
     return(
       <div>
-        <NavBar setUser={this.setUser} logout={this.logout} currentUser={this.state.currentUser}/>
+      <NavBar setUser={this.setUser} logout={this.logout} currentUser={this.state.currentUser}/>
         <div>
           <div>
           {this.state.start ? null : this.state.currentUser ? (<div>  <Instructions /> <Button onClick={this.initiateGame}> Start New Game </Button></div>) : <Instructions />}

@@ -13,8 +13,9 @@ class MainContainer extends React.Component {
     atmosphere: null,
     plantedTrees: 0,
     choppedTrees: 0,
-    firewoodCount: 0
+    firewoodCount: 0,
   };
+
 
   componentDidMount() {
     this.setState({
