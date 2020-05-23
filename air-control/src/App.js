@@ -85,12 +85,7 @@ class App extends React.Component {
     // console.log('atmosphere', this.state.atmosphere);
     // console.log('trees', this.state.trees);
     // console.log(this.state.currentUser.atmospheres);
-<<<<<<< HEAD
-    
-    return(
-      <div>
-      <NavBar setUser={this.setUser} logout={this.logout} currentUser={this.state.currentUser}/>
-=======
+
 
     return (
       <div className="nav-bar">
@@ -99,7 +94,7 @@ class App extends React.Component {
           logout={this.logout}
           currentUser={this.state.currentUser}
         />
->>>>>>> 2689fb9c2648fc800193d6e6e76c0032455ef1f1
+
         <div>
           <div className="instructions"> 
             {this.state.start ? null : this.state.currentUser ? (
