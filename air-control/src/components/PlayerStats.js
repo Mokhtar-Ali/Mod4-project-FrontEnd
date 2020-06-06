@@ -1,22 +1,21 @@
 import React from 'react'
 import "../Css/MainContainer.css"
 
-class PlayerStats extends React.Component {
+export default function PlayerStats(props){
 
-  state = {
-    
-  }
-
-render() {
+  
   return (
     <div className="player-stats">
-      <p>Player: {this.props.user.name}</p>
-      <p>Trees Planted: {this.props.plantedTrees} </p>
-      <p>Trees Chopped Down: {this.props.choppedTrees}</p>
+      {props.user ?
+        <div>
+          <p>Player: {props.user.name}</p>
+          <p>Trees Planted: {props.plantedTrees} </p>
+          <p>Trees Chopped Down: {props.choppedTrees}</p>
+        </div>
+        : null }
+
     </div>
   );
-
-}
 }
 
-export default PlayerStats;
+

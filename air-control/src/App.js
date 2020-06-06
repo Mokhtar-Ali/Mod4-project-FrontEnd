@@ -70,15 +70,18 @@ class App extends React.Component {
   };
 
   logout = () => {
-    this.setState(
-      {
-        currentUser: null
-      },
-      () => {
-        localStorage.removeItem("user_id");
-        this.props.history.push("/");
-      }
-    );
+    this.setState({ currentUser: null })
+    localStorage.removeItem("user_id");
+    this.props.history.push("/");
+    // this.setState(
+    //   {
+    //     currentUser: null
+    //   },
+    //   () => {
+    //     localStorage.removeItem("user_id");
+    //     this.props.history.push("/");
+    //   }
+    // );
   };
 
   render() {
@@ -96,7 +99,7 @@ class App extends React.Component {
         />
 
         <div>
-          <div className="instructions"> 
+          <div className="instructions">
             {this.state.start ? null : this.state.currentUser ? (
               <div>
                 {" "}
@@ -104,8 +107,8 @@ class App extends React.Component {
                 <Button onClick={this.initiateGame}> Start New Game </Button>
               </div>
             ) : (
-              <Instructions />
-            )}
+                <Instructions />
+              )}
           </div>
           {this.state.start ? (
             <MainContainer
