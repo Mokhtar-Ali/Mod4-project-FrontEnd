@@ -8,6 +8,8 @@ class Weather extends React.Component {
     this.displayWeather();
   }
 
+  
+
   displayWeather = () => {
     const weather = ["Sunny  ☀️", "Rainy  🌧", "Cloudy  🌫", "Snowy  ❄️"];
     const randomCondition = weather[Math.floor(Math.random() * weather.length)];
@@ -28,7 +30,10 @@ class Weather extends React.Component {
     } else {
       this.setState({ temperature: Math.floor(Math.random() * (33 - 1)) + 1 });
     }
+
   };
+
+  changeWeather = setInterval(this.displayWeather, 30000);
 
   render() {
 
@@ -37,6 +42,7 @@ class Weather extends React.Component {
         <h6>Current conditions</h6>
         <p>Weather: {this.state.weather} </p>
         <p>Temperature: {this.state.temperature}°F </p>
+       
       </div>
     );
   }

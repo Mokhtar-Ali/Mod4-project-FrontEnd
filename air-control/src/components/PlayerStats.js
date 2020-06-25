@@ -6,7 +6,7 @@ export default function PlayerStats(props){
   
   return (
     <div className="player-stats">
-      {props.user ?
+      {props.user ? 
         <div>
           <p>Player: {props.user.name}</p>
           <p>Trees Planted: {props.plantedTrees} </p>

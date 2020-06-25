@@ -3,7 +3,7 @@ import "./App.css";
 import MainContainer from "./containers/MainContainer";
 import NavBar from "./containers/Navbar";
 import Instructions from "./components/Instructions";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"; // bootstrap
 import { Button } from "react-bootstrap"; // bootstrap buttons
 
@@ -12,8 +12,10 @@ class App extends React.Component {
     start: false,
     currentUser: null,
     atmosphere: null,
-    trees: []
+    trees: [],
+    score: 0
   };
+  // test
 
   componentDidMount() {
     const user_id = localStorage.user_id;
@@ -85,11 +87,6 @@ class App extends React.Component {
   };
 
   render() {
-    // console.log('atmosphere', this.state.atmosphere);
-    // console.log('trees', this.state.trees);
-    // console.log(this.state.currentUser.atmospheres);
-
-
     return (
       <div className="nav-bar">
         <NavBar
