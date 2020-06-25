@@ -48,6 +48,7 @@ class MainContainer extends React.Component {
           treesNum: trees2.length,
           plantedTrees: this.state.plantedTrees + 1
         });
+        this.props.increaseScore()
       });
   };
 
@@ -69,6 +70,7 @@ class MainContainer extends React.Component {
         choppedTrees: this.state.choppedTrees + 1,
         firewoodCount: this.state.firewoodCount + 1
       });
+      this.props.decreaseScore()
     } else {
       alert("You cut down all the trees 😭 Sorry, you lose!");
     }
@@ -125,6 +127,8 @@ class MainContainer extends React.Component {
   }; 
 
   render() {
+    console.log(this.props.score)
+    
     return (
       <div className="main-container">
         <div className='top'>
@@ -138,6 +142,7 @@ class MainContainer extends React.Component {
           waterTree={this.waterTree}
           plantedTrees={this.state.plantedTrees}
           choppedTrees={this.state.choppedTrees}
+          score={this.props.score}
         />
           </div>
         <div className="wrappers">

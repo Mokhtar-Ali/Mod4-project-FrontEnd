@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css' // bootstrap
 import LoginForm from '../components/LoginForm'
 import Signup from "../components/Signup";
 import "../App.css";
-import Test from "../components/Test";
 
 const NavBar = (props) => {
   return (
@@ -19,8 +18,7 @@ const NavBar = (props) => {
         </div>
       
           <NavLink style={{marginLeft:'10px'}} to='/'> Home </NavLink>
-          {/* <NavLink style={{marginLeft:'10px'}} to='/test'> Test </NavLink> */}
-          <Route exact path="/test" component={Test}/>
+         
           
           {(props.currentUser) ? null : <NavLink style={{marginLeft:'10px'}} to='/login'> Login </NavLink>}
           {(props.currentUser) ? null : <NavLink style={{marginLeft:'10px'}} to='/signup'> Signup </NavLink>}

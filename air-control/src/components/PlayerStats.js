@@ -8,7 +8,7 @@ export default function PlayerStats(props){
     <div className="player-stats">
       {props.user ? 
         <div>
-          <p>Player: {props.user.name}</p>
+          <p>Score: {props.score}</p>
           <p>Trees Planted: {props.plantedTrees} </p>
           <p>Trees Chopped Down: {props.choppedTrees}</p>
         </div>

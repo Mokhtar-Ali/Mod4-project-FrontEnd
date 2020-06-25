@@ -86,7 +86,19 @@ class App extends React.Component {
     // );
   };
 
+  increaseScore = () => {
+    this.setState({
+      score: this.state.score += 10
+    })
+  }
+
+  decreaseScore = () => {
+    this.setState({
+      score: this.state.score -= 5
+    })
+  }
   render() {
+    // console.log(this.state.score)
     return (
       <div className="nav-bar">
         <NavBar
@@ -112,6 +124,9 @@ class App extends React.Component {
               currentUser={this.state.currentUser}
               atmosphere={this.state.atmosphere}
               trees={this.state.trees}
+              score={this.state.score}
+              increaseScore={this.increaseScore}
+              decreaseScore={this.decreaseScore}
             />
           ) : null}
         </div>

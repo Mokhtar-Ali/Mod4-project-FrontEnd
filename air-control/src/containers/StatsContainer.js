@@ -39,6 +39,7 @@ class StatsContainer extends React.Component {
           user={user}
           plantedTrees={this.props.plantedTrees} 
           choppedTrees={this.props.choppedTrees}
+          score={this.props.score}
         />
         <Weather />
         <AirQualityLevel
