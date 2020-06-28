@@ -14,7 +14,7 @@ User will have to remove trees from forest to make firewood
 User will need to monitor the carbon dioxide level and oxygen level to make the decision to plant more trees
 
 
-## Score 
+## Instructions 
 If User plants a tree +10 Score
 If User cuts a tree -5 Score
 If Total trees is less than 5 or score is less than 20 Game over

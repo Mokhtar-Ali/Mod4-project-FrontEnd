@@ -9,28 +9,3 @@ body {
     height: 100vh;
 }
 
-.navbar > .top {
-    display: flex;
-    justify-content: space-between;
-    border-bottom-style: solid;
-    border-color: rgba(150,150,150,0.25);
-    border-width: 1px;
-    padding: 10px;
-    padding-left: 15px;
-  }
-  
-  .navbar > .bottom {
-    display: flex;
-    width: 100%;
-    padding: 5px;
-    padding-left: 15vw;
-  }
-  .navbar {
-    width: 100%;
-  }
-
-  .logo {
-    width: 30px;
-    margin: 2px;
-    margin-right: 7px;
-  }
