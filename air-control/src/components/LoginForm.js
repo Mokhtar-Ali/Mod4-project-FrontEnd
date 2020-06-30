@@ -37,11 +37,12 @@ class LoginForm extends React.Component {
         
       }
 
-
+ 
     render() {
         return (
             <div className="Login">
-                <h3>Log In To Play</h3>
+                <h3 style={{textAlign: 'center'}}>Log In To Play</h3>
+                <br />
                 <form onSubmit={this.handleSubmit} id='form'>
                     <FormGroup controlId="email" bssize="large">
                         <label>Name</label>

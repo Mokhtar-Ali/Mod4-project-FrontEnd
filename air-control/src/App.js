@@ -6,6 +6,9 @@ import Instructions from "./components/Instructions";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"; // bootstrap
 import { Button } from "react-bootstrap"; // bootstrap buttons
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import LoginForm from './components/LoginForm'
+import Signup from "./components/Signup";
 
 class App extends React.Component {
   state = {
@@ -97,10 +100,12 @@ class App extends React.Component {
       score: this.state.score -= 5
     })
   }
+
+
   render() {
-    // console.log(this.state.score)
     return (
       <div className="nav-bar">
+
         <NavBar
           setUser={this.setUser}
           logout={this.logout}
