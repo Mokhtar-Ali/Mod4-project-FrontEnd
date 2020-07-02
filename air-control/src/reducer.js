@@ -1,7 +1,14 @@
 const defaultState = {
     currentUser: {id: 2, name: 'Mocha', password: 123},
     trees: [],
-    score: 10
+    score: 10,
+    atmosphere: null,
+    timer: 180, // work on logic for timer
+    fireWood: 0,
+    weather: "",
+    temperature: null,
+    
+
 }
 
 function reducer(state = defaultState, action) {

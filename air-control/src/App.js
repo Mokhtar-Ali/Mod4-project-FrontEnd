@@ -92,18 +92,6 @@ class App extends React.Component {
     // );
   };
 
-  increaseScore = () => {
-    this.setState({
-      score: this.state.score += 10
-    })
-  }
-
-  decreaseScore = () => {
-    this.setState({
-      score: this.state.score -= 5
-    })
-  }
-
 
   render() {
     return (
@@ -136,8 +124,8 @@ class App extends React.Component {
               atmosphere={this.state.atmosphere}
               trees={this.state.trees}
               // score={this.state.score}
-              increaseScore={this.increaseScore}
-              decreaseScore={this.decreaseScore}
+              // increaseScore={this.increaseScore}
+              // decreaseScore={this.decreaseScore}
             />
           ) : null}
         </div>

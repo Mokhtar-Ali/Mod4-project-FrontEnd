@@ -4,6 +4,7 @@ import TreeContainer from "./TreeContainer";
 import FirewoodContainer from "./FirewoodContainer";
 import StatsContainer from "./StatsContainer";
 import { connect } from 'react-redux'
+import { increaseScore, decreaseScore} from '../actionCreator'
 
 const TreesApi = "http://localhost:3000/trees";
 
@@ -49,7 +50,7 @@ class MainContainer extends React.Component {
           treesNum: trees2.length,
           plantedTrees: this.state.plantedTrees + 1
         });
-        this.props.increaseScore()
+        this.props.increaseScore() // Redux
       });
   };
 
@@ -71,7 +72,7 @@ class MainContainer extends React.Component {
         choppedTrees: this.state.choppedTrees + 1,
         firewoodCount: this.state.firewoodCount + 1
       });
-      this.props.decreaseScore()
+      this.props.decreaseScore() // Redux
     } else {
       alert("You cut down all the trees 😭 Sorry, you lose!");
     }
@@ -167,5 +168,11 @@ const msp = state => {
     score: state.score
   }
 }
-export default connect(msp)(MainContainer);
+
+// const mdp = dispatch => {
+//   return {
+
+//   }
+// }
+export default connect(msp, { increaseScore, decreaseScore} )(MainContainer);
 
