@@ -22,11 +22,12 @@ const NavBar = (props) => {
       <div className='divider' ></div>
 
       <div className='nav-right'>
-        <button setUser={props.setUser}><a href='/login'> Login</a></button>
+        {/* <button setUser={props.setUser}><a href='/login'> Login</a></button> */}
         {/* {(props.currentUser) ? null : <NavLinb  k setUser={props.setUser} style={{ marginLeft: '10px' }} to='/login'> Login </NavLink>} */}
-        {(props.currentUser) ? null : <NavLink style={{ marginLeft: '10px' }} to='/signup'> Signup </NavLink>}
+        {/* {(props.currentUser) ? null : <NavLink style={{ marginLeft: '10px' }} to='/signup'> Signup </NavLink>} */}
         {/* <Route exact path="/login" render={() => <LoginForm setUser={props.setUser} />} />
         <Route exact path="/signup" render={() => (!props.currentUser) ? <Signup setUser={props.setUser} /> : null} /> */}
+        {props.currentUser ? <h6>{props.currentUser.name}</h6> : null}
         {props.currentUser ? <Link onClick={props.logout} >Logout</Link> : null}
       </div>
 

@@ -124,6 +124,9 @@ class App extends React.Component {
                 <Instructions />
               )}
           </div>
+                                            {/*  */}
+          {this.state.currentUser ? null : <div> <LoginForm setUser={this.setUser}/> <Signup /></div> }
+          
           {this.state.start ? (
             <MainContainer
               currentUser={this.state.currentUser}
