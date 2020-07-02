@@ -1,73 +1,171 @@
 import React from "react";
-import '../Css/MainContainer.css'
+import "../Css/MainContainer.css";
 import TreeContainer from "./TreeContainer";
 import FirewoodContainer from "./FirewoodContainer";
 import StatsContainer from "./StatsContainer";
-import Tools from "../components/Tools"
+import { connect } from 'react-redux'
 
-const TreesApi = "http://localhost:3000/trees"
+const TreesApi = "http://localhost:3000/trees";
 
 class MainContainer extends React.Component {
   state = {
-    user:null,
     trees: [],
-    treesNum: 0
-  }
+    treesNum: 0,
+    atmosphere: null,
+    plantedTrees: 0,
+    choppedTrees: 0,
+    firewoodCount: 0,
+  };
+
 
   componentDidMount() {
-    fetch(`http://localhost:3000/users/${this.props.currentUser.id}`)
-      .then(response => response.json())
-      .then(response => this.setState({ user: response, trees: response.trees, treesNum: response.trees.length}))
+    this.setState({
+      trees: [...this.props.trees],
+      atmosphere: { ...this.props.atmosphere },
+      treesNum: this.props.trees.length,
+      plantedTrees: this.props.trees.length,
+      choppedTrees: 0
+    });
   }
 
-  plantTree = () => { // plnt a tree will make a post fetch 
-    let data = { user_id: this.state.user.id, atmosphere_id: 1, image: ' ' }
-    console.log('start fetching', data);
-    fetch( TreesApi, { // changed to trees instead of users
-      method: 'POST',
+  plantTree = () => {
+    // plnt a tree will make a post fetch
+    let data = { atmosphere_id: this.state.atmosphere.id };
+    // console.log('start fetching', data);
+    fetch(TreesApi, {
+      //
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    }).then(resp => resp.json())
-    .then(tree => {
-      let trees2 = [...this.state.trees]
-      trees2.push(tree)
-      this.setState({trees: trees2, treesNum: trees2.length})
     })
-  }
+      .then(resp => resp.json())
+      .then(tree => {
+        let trees2 = [...this.state.trees];
+        trees2.push(tree);
+        this.setState({
+          trees: trees2,
+          treesNum: trees2.length,
+          plantedTrees: this.state.plantedTrees + 1
+        });
+        this.props.increaseScore()
+      });
+  };
 
-  cutTree = () => {  // need to work on it more 
-    console.log('cutting tree')
-    let trees2 = [...this.state.trees] // copying main array of trees
-    let treeId = trees2[0].id  // getting id 
-    let tree = trees2.find(t => t.id === treeId) // getting the tree obj
-    let index = trees2.indexOf(tree) // find index
-    trees2.splice(index , 1) // remove tree from copied array 
-  
- 
-    fetch(`http://localhost:3000/trees/${treeId}`, {
-      method: 'DELETE'
-    })
-    this.setState({trees: trees2, treesNum: trees2.length})
-    
-  }
- 
+  cutTree = () => {
+    if (this.state.trees.length >= 1) {
+      console.log(this.state.trees, "trees?");
+      let trees2 = [...this.state.trees]; // copying main array of trees
+      let treeId = trees2[0].id; // getting id
+      let tree = trees2.find(t => t.id === treeId); // getting the tree obj
+      let index = trees2.indexOf(tree); // find index
+      trees2.splice(index, 1); // remove tree from copied array
 
+      fetch(`http://localhost:3000/trees/${treeId}`, {
+        method: "DELETE"
+      });
+      this.setState({
+        trees: trees2,
+        treesNum: trees2.length,
+        choppedTrees: this.state.choppedTrees + 1,
+        firewoodCount: this.state.firewoodCount + 1
+      });
+      this.props.decreaseScore()
+    } else {
+      alert("You cut down all the trees 😭 Sorry, you lose!");
+    }
+  };
+
+  waterTree = () => {
+    // will pick a tree && do fetch PATCH on that tree, conditinal to check which tree' size is small first & medium second
+    let smallTrees = this.state.trees.filter(tree => tree.size === "small");
+    let mediumTrees = this.state.trees.filter(tree => tree.size === "medium");
+    let myTrees = [...this.state.trees]
+    let data;
+    if (smallTrees.length >= 1) {
+      data = { size: "medium", oxygen: 5, carbon_dioxide: -4, firewood: 1 };
+      let id = smallTrees[0].id;
+      fetch(`http://localhost:3000/trees/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+        .then(resp => resp.json())
+        .then(response => {
+          let trees2 = [...this.state.trees];
+          let index = trees2.findIndex(t => t.id === id);
+          trees2.splice(index, 1, response);
+          this.setState({ trees: trees2 });
+          smallTrees.splice(0, 1)
+          console.log(smallTrees, 'small trees?')
+        });
+    } else if (smallTrees.length >= 1 && mediumTrees) {
+      data = { size: "large", oxygen: 7, carbon_dioxide: -6, firewood: 2 };
+      let id = smallTrees[0].id;
+      fetch(`http://localhost:3000/trees/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+        .then(resp => resp.json())
+        .then(response => {
+          let trees2 = [...this.state.trees];
+          let index = trees2.findIndex(t => t.id === id);
+          trees2.splice(index, 1, response);
+          // debugger
+          this.setState({ trees: trees2 });
+        });
+    } else {
+      alert("All trees have been watered and there's more oxygen for everybody!😁");
+    }
+  }; 
 
   render() {
-    // console.log(this.state.user);
-    // console.log(this.state.trees);
+    // console.log(this.props.score)
+    
     return (
       <div className="main-container">
-        <StatsContainer user={this.props.currentUser} />
-        <TreeContainer user={this.props.currentUser} trees={this.state.trees} plantTree={this.plantTree} treesNum={this.state.treesNum} cutTree={this.cutTree}/>
-        <FirewoodContainer />
-        <Tools /> 
+        <div className='top'>
+        <StatsContainer
+          atmosphere={this.state.atmosphere}
+          user={this.props.currentUser}
+          cutTree={this.cutTree}
+          plantTree={this.plantTree}
+          treesNum={this.state.treesNum}
+          trees={this.state.trees}
+          waterTree={this.waterTree}
+          plantedTrees={this.state.plantedTrees}
+          choppedTrees={this.state.choppedTrees}
+          // score={this.props.score}
+        />
+          </div>
+        <div className="wrappers">
+        <FirewoodContainer firewoodCount={this.state.firewoodCount} />
+        <TreeContainer
+          user={this.props.currentUser}
+          trees={this.state.trees}
+          treesNum={this.state.treesNum}
+          atmosphere={this.state.atmosphere}
+        />
+        
       </div>
+        </div>
     );
   }
-
 }
 
-export default MainContainer;
+const msp = state => {
+  return {
+    currentUser: state.currentUser,
+    score: state.score
+  }
+}
+export default connect(msp)(MainContainer);
+

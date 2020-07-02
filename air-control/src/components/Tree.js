@@ -1,11 +1,15 @@
 import React from 'react'
 
-function Tree() {
+
+function Tree(props) { 
+  
+  console.log(props.tree.size)
+  
   return (
     <div className="tree">
-      <h1>Tree</h1>
+      {props.tree.size === 'small'? <img src={props.tree.image} height='90px' /> : <img src={props.tree.image} height='120px' />} 
     </div>
-  );
+  )
 }
 
 export default Tree;

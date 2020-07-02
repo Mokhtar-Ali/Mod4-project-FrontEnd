@@ -1,10 +1,10 @@
 import React from "react";
 
 
-function Firewood () {
+function Firewood (props) {
   return(
-      <div>
-        <h1>Firewood</h1>
+    <div>
+        <img src={props.imgLog} height='50px'/>
       </div>
   
   )

@@ -47,6 +47,7 @@ class Signup extends React.Component {
 
         return (
             <div className="Login">
+                <h3 style={{textAlign: 'center'}}>Create An Account</h3>
                 <form onSubmit={this.handleSubmit} id='form'>
                     <FormGroup controlId="email" bsSize="large">
                         <label>Name</label>

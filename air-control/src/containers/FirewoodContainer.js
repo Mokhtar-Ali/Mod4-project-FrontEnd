@@ -1,15 +1,20 @@
-import React from 'react'
-import "../Css/MainContainer.css"
+import React from "react";
+import "../Css/MainContainer.css";
+import Firewood from "../components/Firewood";
 
-// air-control/src/Css/MainContainer.css
+function FirewoodContainer(props) {
+  const imgLog =
+    "http://www.clker.com/cliparts/B/E/e/f/z/O/lumber-icon-hi.png";
+  const renderFirewood = () => {
+    let fireWoodArr = [];
+    for (let i = 0; i < props.firewoodCount; i++) {
+      console.log(props.firewoodCount);
 
-function FirewoodContainer() {
-
-  return (
-    <div className="firewood-container">
-      <h1>FirewoodContainer</h1>
-    </div>
-  );
+      fireWoodArr.push(<Firewood key={i} imgLog={imgLog}       />);
+    }
+    return fireWoodArr;
+  };
+  return <div className="firewood-container">{renderFirewood()}</div>;
 }
 
 export default FirewoodContainer;
