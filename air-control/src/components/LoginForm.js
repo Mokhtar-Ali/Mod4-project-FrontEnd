@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import "../Css/Login.css";
+import { connect } from 'react-redux'
+import { assignUser } from '../actionCreator'
 
 class LoginForm extends React.Component {
 
@@ -31,8 +33,10 @@ class LoginForm extends React.Component {
           if (response.errors){
             alert(response.errors)
           } else {
-            this.props.setUser(response)
-            window.close()
+              console.log(response);
+              
+            assignUser(response)
+            console.log(assignUser);
           }
         })
         this.setState({name: '', password: ''})
@@ -75,4 +79,4 @@ class LoginForm extends React.Component {
         )}
 }
 
-export default LoginForm
+export default connect(null, { assignUser })(LoginForm)

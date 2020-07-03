@@ -2,6 +2,7 @@ import React from "react";
 import '../Css/instructions.css'
 
 
+
 function Instructions() {
   return (
     <div className='instructions'>

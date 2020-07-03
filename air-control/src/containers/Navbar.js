@@ -28,7 +28,7 @@ const NavBar = (props) => {
         {/* <Route exact path="/login" render={() => <LoginForm setUser={props.setUser} />} />
         <Route exact path="/signup" render={() => (!props.currentUser) ? <Signup setUser={props.setUser} /> : null} /> */}
         {props.currentUser ? <h6>{props.currentUser.name}</h6> : null}
-        {/* {props.currentUser ? <Link onClick={props.logout} >Logout</Link> : null} */}
+        {props.currentUser ? <button onClick={props.logout} >Logout</button> : null}
       </div>
 
  

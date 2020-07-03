@@ -6,6 +6,7 @@ import StatsContainer from "./StatsContainer";
 import { connect } from 'react-redux'
 import { increaseScore, decreaseScore} from '../actionCreator'
 
+
 const TreesApi = "http://localhost:3000/trees";
 
 class MainContainer extends React.Component {

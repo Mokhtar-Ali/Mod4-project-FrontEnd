@@ -17,4 +17,4 @@ function FirewoodContainer(props) {
   return <div className="firewood-container">{renderFirewood()}</div>;
 }
 
-export default FirewoodContainer;
+export default FirewoodContainer; 
