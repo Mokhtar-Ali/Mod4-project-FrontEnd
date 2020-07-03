@@ -17,16 +17,13 @@ function reducer(state = defaultState, action) {
         case 'DECREASE_SCORE':
             return { ...state, score: state.score -= 5 }
         case 'ASSIGN_USER':
-            console.log(action.payload, 'in reducer')
             return { ...state, currentUser: action.payload }
         case 'REMOVE_USER':
             return { ...state, currentUser: null }
         case 'ASSIGN_ATMOSPHERE':
-            console.log('in reducer')
-            console.log(action.payload)
             return {...state, atmosphere: action.payload}
         case 'ASSIGN_TREES':
-            return {...state, trees: action.payload.trees}
+            return {...state, trees: action.payload}
         default:
             return state
     }

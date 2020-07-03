@@ -33,10 +33,10 @@ class LoginForm extends React.Component {
           if (response.errors){
             alert(response.errors)
           } else {
-              console.log(response);
+            //   console.log(response);
               
-            assignUser(response)
-            console.log(assignUser);
+            this.props.assignUser(response)
+            // console.log(assignUser);
           }
         })
         this.setState({name: '', password: ''})

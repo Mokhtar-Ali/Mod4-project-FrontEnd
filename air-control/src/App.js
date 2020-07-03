@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import LoginForm from './components/LoginForm'
 import Signup from "./components/Signup";
 import { connect } from 'react-redux'
-import { assignUser, removeUser, assingAtmosphere, assingTrees } from './actionCreator'
+import { assignUser, removeUser, assignAtmosphere, assignTrees } from './actionCreator'
 
 
 class App extends React.Component {
@@ -39,6 +39,13 @@ class App extends React.Component {
     }
   }
 
+  // applyTwoFuncs = (response) => {
+  //   this.props.assignAtmosphere(response)
+  //   // this.props.assignTrees(response.trees)
+  //   // console.log('response', response);
+  //   console.log('trees', response.trees);
+  // }
+
   initiateGame = () => {  // Redux
     fetch("http://localhost:3000/atmospheres", {
       method: "Post",
@@ -48,13 +55,8 @@ class App extends React.Component {
       body: JSON.stringify({ user_id: this.props.currentUser.id })
     })
       .then(resp => resp.json())
-      .then(response =>
-        this.setState({
-          atmosphere: response,
-          trees: response.trees,
-          start: true
-        })
-      );
+      .then(response => this.props.assignAtmosphere(response))  
+      this.setState({start: true})
   };
 
   setUser = user => {
@@ -71,7 +73,8 @@ class App extends React.Component {
 
 
   render() {
-    console.log(this.props.currentUser);
+    console.log(this.props.trees);
+    console.log(this.props.atmosphere);
     return (
       <div className="nav-bar">
 
@@ -94,12 +97,12 @@ class App extends React.Component {
               )}
           </div>
           {/*  */}
-          {this.props.currentUser ? null : <div> <LoginForm /> <Signup /></div>} {/* Needs work */}
+          {this.props.currentUser ? null : <div> <LoginForm /> <Signup /></div>} {/* Needs autologin work */}
 
           {this.state.start ? (
             <MainContainer
-              atmosphere={this.state.atmosphere}
-              trees={this.state.trees}
+              atmosphere={this.props.atmosphere}
+              trees={this.props.trees}
             />
           ) : null}
         </div>
@@ -118,5 +121,5 @@ const msp = state => {
   }
 }
 
-export default connect(msp, { assignUser, removeUser })(App);
+export default connect(msp, { assignUser, removeUser, assignAtmosphere, assignTrees })(App);
 
